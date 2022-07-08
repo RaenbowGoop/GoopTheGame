@@ -3,8 +3,8 @@ its goop, but game.
 
 created by Allyson Le and Amanda Le.
 
-## Credits
+# Credits
 Music
--Sappheiros - Awake
+Sappheiros - Awake
 
 Sound Effects
