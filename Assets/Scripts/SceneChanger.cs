@@ -6,7 +6,7 @@ using UnityEngine;
 public class SceneChanger : MonoBehaviour
 {
     public Animator sceneTransition;
-    public float transitionTime = 1f;
+    public float transitionTime = 3f;
 
     //change to MainMenu Scene
     public void LoadMainMenu()
@@ -24,7 +24,7 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadOptions()
     {
-        SceneManager.LoadScene("Options");
+        SceneManager.LoadScene("OptionsMenu");
     }
 
     public void LoadStartMenu()
@@ -34,7 +34,7 @@ public class SceneChanger : MonoBehaviour
 
     public void UnloadOptions()
     {
-        SceneManager.UnloadScene("Options");
+        SceneManager.UnloadScene("OptionsMenu");
     }
 
     public void LoadStartMenuWTransition()
@@ -48,10 +48,18 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadLevel("MainMenuBGM"));
     }
 
+    //function to quit game
+    public void QuitGame()
+    {
+        Debug.Log("quit"); //for testing, delete later
+        Application.Quit();
+    }
+
     IEnumerator LoadLevel(string sceneName)
     {
         //Play animation
         sceneTransition.SetTrigger("Start");
+
         //wait for transition to finish
         yield return new WaitForSeconds(transitionTime);
 

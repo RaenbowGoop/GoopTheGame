@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StartMenuBGM
   - MainMenuBGM
+  - OptionsMenu
   layers:
   - Default
   - TransparentFX
