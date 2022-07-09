@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class SceneChanger : MonoBehaviour
 {
-   
+    public Animator sceneTransition;
+    public float transitionTime = 1f;
 
     //change to MainMenu Scene
     public void LoadMainMenu()
@@ -18,7 +19,7 @@ public class SceneChanger : MonoBehaviour
         StartMenuMusic = musicObject.GetComponent<AudioSource>();
         Destroy(StartMenuMusic);
 
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LoadLevel("MainMenu"));
     }
 
     public void LoadOptions()
@@ -28,6 +29,33 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadStartMenu()
     {
-        SceneManager.LoadScene("StartMenu");
+        SceneManager.LoadScene("StartMenu"); 
+    }
+
+    public void UnloadOptions()
+    {
+        SceneManager.UnloadScene("Options");
+    }
+
+    public void LoadStartMenuWTransition()
+    {
+        AudioSource MainMenuMusic;
+        //Fetch the AudioSource from the GameObject
+        GameObject musicObject = GameObject.FindWithTag("MainMenuBGM");
+        MainMenuMusic = musicObject.GetComponent<AudioSource>();
+        Destroy(MainMenuMusic);
+
+        StartCoroutine(LoadLevel("MainMenuBGM"));
+    }
+
+    IEnumerator LoadLevel(string sceneName)
+    {
+        //Play animation
+        sceneTransition.SetTrigger("Start");
+        //wait for transition to finish
+        yield return new WaitForSeconds(transitionTime);
+
+        //Load Scene
+        SceneManager.LoadScene(sceneName);
     }
 }
