@@ -11,13 +11,9 @@ public class SceneChanger : MonoBehaviour
     //change to MainMenu Scene
     public void LoadMainMenu()
     {
-        //Making Start Menu BGM stop
-        // getting audiosource component
-        AudioSource StartMenuMusic;
-        //Fetch the AudioSource from the GameObject
-        GameObject musicObject = GameObject.FindWithTag("StartMenuBGM");
-        StartMenuMusic = musicObject.GetComponent<AudioSource>();
-        Destroy(StartMenuMusic);
+        GameObject audio = GameObject.Find("StartMenuBGM");
+        SceneManager.MoveGameObjectToScene(audio, SceneManager.GetSceneByName("StartMenu"));
+        Destroy(audio);
 
         StartCoroutine(LoadLevel("MainMenu"));
     }
@@ -29,23 +25,18 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadStartMenu()
     {
-        SceneManager.LoadScene("StartMenu"); 
-    }
-
-    public void UnloadOptions()
-    {
-        SceneManager.UnloadScene("OptionsMenu");
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void LoadStartMenuWTransition()
     {
-        AudioSource MainMenuMusic;
-        //Fetch the AudioSource from the GameObject
-        GameObject musicObject = GameObject.FindWithTag("MainMenuBGM");
-        MainMenuMusic = musicObject.GetComponent<AudioSource>();
-        Destroy(MainMenuMusic);
+        GameObject audio = GameObject.Find("MainMenuBGM");
+        SceneManager.MoveGameObjectToScene(audio, SceneManager.GetSceneByName("MainMenu"));
+        Destroy(audio);
 
-        StartCoroutine(LoadLevel("MainMenuBGM"));
+        StartCoroutine(LoadLevel("StartMenu"));
+
+
     }
 
     //function to quit game
