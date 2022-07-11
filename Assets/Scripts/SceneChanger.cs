@@ -6,23 +6,23 @@ using UnityEngine;
 public class SceneChanger : MonoBehaviour
 {
     public Animator sceneTransition;
-    public float transitionTime = 3f;
+    float transitionTime = 1f;
 
-    //change to MainMenu Scene
-    public void LoadMainMenu()
+    //Loading Level with transition
+
+    IEnumerator LoadLevel(string sceneName)
     {
-        GameObject audio = GameObject.Find("StartMenuBGM");
-        SceneManager.MoveGameObjectToScene(audio, SceneManager.GetSceneByName("StartMenu"));
-        Destroy(audio);
+        //Play animation
+        sceneTransition.SetTrigger("Start");
 
-        StartCoroutine(LoadLevel("MainMenu"));
+        //wait for transition to finish
+        yield return new WaitForSeconds(transitionTime);
+
+        //Load Scene
+        SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadOptions()
-    {
-        SceneManager.LoadScene("OptionsMenu");
-    }
-
+    //change to Start Menu Scene
     public void LoadStartMenu()
     {
         SceneManager.LoadScene("StartMenu");
@@ -39,22 +39,31 @@ public class SceneChanger : MonoBehaviour
 
     }
 
+    //change to Options Scene
+    public void LoadOptions()
+    {
+        SceneManager.LoadScene("OptionsMenu");
+    }
+
+    //change to MainMenu Scene
+    public void LoadMainMenu()
+    {
+        GameObject audio = GameObject.Find("StartMenuBGM");
+        SceneManager.MoveGameObjectToScene(audio, SceneManager.GetSceneByName("StartMenu"));
+        Destroy(audio);
+
+        StartCoroutine(LoadLevel("MainMenu"));
+    }
+
     //function to quit game
     public void QuitGame()
     {
-        Debug.Log("quit"); //for testing, delete later
         Application.Quit();
     }
 
-    IEnumerator LoadLevel(string sceneName)
+    //change to sceneName
+    public void LoadScene( string sceneName )
     {
-        //Play animation
-        sceneTransition.SetTrigger("Start");
-
-        //wait for transition to finish
-        yield return new WaitForSeconds(transitionTime);
-
-        //Load Scene
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(LoadLevel(sceneName));
     }
 }
