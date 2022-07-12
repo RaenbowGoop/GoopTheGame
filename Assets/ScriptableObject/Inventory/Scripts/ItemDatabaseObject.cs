@@ -20,7 +20,7 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
         for (int i = 0; i < GoopObjects.Length; i++)
         {
             GetId.Add(GoopObjects[i], i);
-            GoopObjects[i].Id = GetId[GoopObjects[i]];
+            GoopObjects[i].Id = i;
             GetGoop.Add(i, GoopObjects[i]);
         }
     }

@@ -28,7 +28,7 @@ public class InventoryObject : ScriptableObject
         for(int count = 0; count < container.Items.Count; count++)
         {
             //returns from function if object is already in container
-            if (container.Items[count].item.goopFaction == _item.goopFaction && container.Items[count].item.goopName == _item.goopName)
+            if (container.Items[count].item.goopFaction == _item.goopFaction && container.Items[count].item.goopName == _item.goopName && container.Items[count].item.Id == _item.Id)
             {
                 container.Items[count].item.goopDuplicates++;
                 Save();
@@ -36,7 +36,7 @@ public class InventoryObject : ScriptableObject
                 return; 
             }
         }
-        container.Items.Add(new InventorySlot(database.GetId[_item], _item));
+        container.Items.Add(new InventorySlot(_item.Id, _item));
     }
 
     [ContextMenu("Save")]
