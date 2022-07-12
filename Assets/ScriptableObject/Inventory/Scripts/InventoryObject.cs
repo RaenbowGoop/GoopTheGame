@@ -22,7 +22,6 @@ public class InventoryObject : ScriptableObject
 #endif
     }
 
-
     public void addItem(GoopObject _item)
     {
         for(int count = 0; count < container.Items.Count; count++)

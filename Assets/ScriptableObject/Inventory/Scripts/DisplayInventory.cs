@@ -45,6 +45,7 @@ public class DisplayInventory : MonoBehaviour
             obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetGoop[slot.item.Id].uiDisplay;
             //obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.transform.GetChild(2).GetComponentInChildren<TextMeshProUGUI>().text = totalLevel.ToString("n0");
+            itemsDisplayed.Add(slot, obj);
 
             if (totalLevel >= slot.item.goopLevelCap)
             {

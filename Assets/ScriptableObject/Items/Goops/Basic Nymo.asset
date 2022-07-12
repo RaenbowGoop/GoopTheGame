@@ -31,4 +31,4 @@ MonoBehaviour:
   goopCastTime: 0.4
   goopDC: 100
   goopCDT: 5
-  goopDuplicates: 10
+  goopDuplicates: 0
