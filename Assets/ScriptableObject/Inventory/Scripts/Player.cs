@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private void OnApplicationQuit()
     {
         inventory.Save();
-        inventory.container.Clear();
+        inventory.container.Items.Clear();
     }
 
     private void Start()

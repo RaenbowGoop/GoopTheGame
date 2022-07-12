@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -29,11 +30,23 @@ public class DisplayInventory : MonoBehaviour
 
     public void CreateDisplay()
     {
-        for (int i = 0; i < inventory.container.Count; i++)
+        //Creates GoopObjects, sets UI values, and Adds GoopObjects to ItemsDisplayed
+        for (int i = 0; i < inventory.container.Items.Count; i++)
         {
-            var obj = Instantiate(inventory.container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+
+            InventorySlot slot = inventory.container.Items[i];
+            int totalLevel = slot.item.goopLevel + slot.item.goopDuplicates;
+
+            var obj = Instantiate(slot.item.prefab, Vector3.zero, Quaternion.identity, transform);
+            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetGoop[slot.item.Id].uiDisplay;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = "LVL " + inventory.container[i].item.goopLevel.ToString("n0");
+            obj.GetComponentInChildren<TextMeshProUGUI>().text = "LVL " + totalLevel.ToString("n0");
+
+            if (totalLevel >= slot.item.goopLevelCap)
+            {
+                Color c = new Color(222, 0, 0, 1.0f);
+                itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().color = c;
+            }
         }
     }
 
@@ -44,14 +57,34 @@ public class DisplayInventory : MonoBehaviour
 
     public void UpdateDisplay()
     {
-        for (int i = 0; i < inventory.container.Count; i++)
+        for (int i = 0; i < inventory.container.Items.Count; i++)
         {
-            if(!itemsDisplayed.ContainsKey(inventory.container[i]))
+            InventorySlot slot = inventory.container.Items[i];
+            int totalLevel = slot.item.goopLevel + slot.item.goopDuplicates;
+
+            //Adds new object to itemsDisplayed if it does not currently have the object
+            if (!itemsDisplayed.ContainsKey(slot))
             {
-                var obj = Instantiate(inventory.container[i].item.prefab, Vector3.zero, Quaternion.identity, transform);
+                var obj = Instantiate(slot.item.prefab, Vector3.zero, Quaternion.identity, transform);
+                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetGoop[slot.item.Id].uiDisplay;
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = "LVL " + inventory.container[i].item.goopLevel.ToString("n0");
-                itemsDisplayed.Add(inventory.container[i], obj);
+                obj.GetComponentInChildren<TextMeshProUGUI>().text = "LVL " + totalLevel.ToString("n0");
+                itemsDisplayed.Add(slot, obj);
+
+                if (totalLevel >= slot.item.goopLevelCap)
+                {
+                    Color c = new Color(222, 0, 0, 1.0f);
+                    obj.GetComponentInChildren<TextMeshProUGUI>().color = c;
+                }
+            }
+            else //If object exists in ItemsDisplayed, update UI 
+            {
+                itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().text = "LVL " + totalLevel.ToString("n0");
+                if (totalLevel >= slot.item.goopLevelCap)
+                {
+                    Color c = new Color(222, 0, 0, 1.0f);
+                    itemsDisplayed[slot].GetComponentInChildren<TextMeshProUGUI>().color = c;
+                }
             }
         }
     }

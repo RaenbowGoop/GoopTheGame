@@ -21,6 +21,8 @@ public class GoopObject : ItemObject
     public int goopDC;  //Deployment Cost
     public float goopCDT; //Cooldown time
 
+    public int goopDuplicates; // number of duplicate units aquired. used for bonus levels
+
     public void Awake()
     {
         type = ItemType.Goop;
