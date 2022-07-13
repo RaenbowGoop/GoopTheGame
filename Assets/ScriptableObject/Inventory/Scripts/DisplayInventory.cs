@@ -42,7 +42,7 @@ public class DisplayInventory : MonoBehaviour
             int totalLevel = slot.item.goopLevel + slot.item.goopDuplicates;
 
             var obj = Instantiate(slot.item.prefab, Vector3.zero, Quaternion.identity, transform);
-            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetGoop[slot.item.Id].uiDisplay;
+            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetGoop[inventory.database.GetId[slot.item]].uiDisplay;
             //obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             obj.transform.GetChild(2).GetComponentInChildren<TextMeshProUGUI>().text = totalLevel.ToString("n0");
             itemsDisplayed.Add(slot, obj);
@@ -73,7 +73,7 @@ public class DisplayInventory : MonoBehaviour
             if (!itemsDisplayed.ContainsKey(slot))
             {
                 var obj = Instantiate(slot.item.prefab, Vector3.zero, Quaternion.identity, transform);
-                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetGoop[slot.item.Id].uiDisplay;
+                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.GetGoop[inventory.database.GetId[slot.item]].uiDisplay;
                 //obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
                 obj.transform.GetChild(2).GetComponentInChildren<TextMeshProUGUI>().text = totalLevel.ToString("n0");
                 itemsDisplayed.Add(slot, obj);
