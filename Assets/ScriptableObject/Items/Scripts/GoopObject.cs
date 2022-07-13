@@ -27,4 +27,15 @@ public class GoopObject : ItemObject
     {
         type = ItemType.Goop;
     }
+
+    public void ResetValues()
+    {
+        goopLevel = 1;
+        goopDuplicates = 0;
+    }
+
+    public void CalculateStats()
+    {
+
+    }
 }

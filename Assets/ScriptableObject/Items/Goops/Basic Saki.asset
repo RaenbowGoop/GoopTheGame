@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7714de91462fd9b41a8ab757fbb5e95b, type: 3}
   m_Name: Basic Saki
   m_EditorClassIdentifier: 
-  Id: 0
   uiDisplay: {fileID: 21300000, guid: 88d7f55701c21534a98d3e5a03ca01cf, type: 3}
   prefab: {fileID: 2516878949651399906, guid: 6d6f362cdba8d2c4f84f38e529aeaab4, type: 3}
   type: 0
@@ -29,3 +28,4 @@ MonoBehaviour:
   goopCastTime: 0.4
   goopDC: 100
   goopCDT: 5
+  goopDuplicates: 0
