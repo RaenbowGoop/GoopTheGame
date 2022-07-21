@@ -9,20 +9,27 @@ public class JSonDataService : IDataService
 {
     public bool SaveData<T>(string RelativePath, T Data)
     {
-        string path = Application.persistentDataPath + RelativePath;
-        if (File.Exists(path))
+        try
         {
-            File.Delete(path);
-        }
-        using FileStream stream = File.Create(path);
-        stream.Close();
-        File.WriteAllText(path, JsonConvert.SerializeObject(Data,
-            new JsonSerializerSettings()
+            string path = Application.persistentDataPath + RelativePath;
+            if (File.Exists(path))
             {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                File.Delete(path);
             }
-        ));
-        return true;
+            using FileStream stream = File.Create(path);
+            stream.Close();
+            File.WriteAllText(path, JsonConvert.SerializeObject(Data,
+                new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                }
+            ));
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     public T LoadData<T>(string RelativePath)

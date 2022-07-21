@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public enum ItemType
 {
@@ -9,11 +10,16 @@ public enum ItemType
     Default
 }
 
+[JsonObject(MemberSerialization.OptIn)]
 public abstract class ItemObject : ScriptableObject
 {
-    public Sprite uiDisplay;
+    public Sprite uiDisplay; //for inventory
     public GameObject prefab;
-    public ItemType type;
-    [TextArea(15, 20)] 
-    public string description;
+    [JsonProperty] public ItemType type;
+    [TextArea(15, 20)]
+    [JsonProperty] public string description;
+    [TextArea(1, 2)]
+    [JsonProperty] public string uiDisplayPath;
+    [TextArea(1, 2)]
+    [JsonProperty] public string prefabPath;
 }

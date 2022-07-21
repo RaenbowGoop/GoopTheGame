@@ -15,17 +15,17 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
     public void OnAfterDeserialize()
     {
         //clears dictionary for reloading
+        GetId = new Dictionary<GoopObject, int>();
+        GetGoop = new Dictionary<int, GoopObject>();
         for (int i = 0; i < GoopObjects.Length; i++)
         {
             GetId.Add(GoopObjects[i], i);
-            //GoopObjects[i].Id = i;
             GetGoop.Add(i, GoopObjects[i]);
         }
     }
 
     public void OnBeforeSerialize()
     {
-        GetId = new Dictionary<GoopObject, int>();
-        GetGoop = new Dictionary<int, GoopObject>();
+
     }
 }

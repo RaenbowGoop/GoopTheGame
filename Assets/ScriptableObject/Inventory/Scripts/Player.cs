@@ -23,24 +23,22 @@ public class Player : MonoBehaviour
         inventory.container.Items.Clear();
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        inventory.Save();
         inventory.Load();
+
         //if the inventory is empty at start, add basic units
         if (inventory.container.Items.Count < 4)
         {
-            
-            inventory.addItem(inventory.database.GoopObjects[0]);
-            inventory.addItem(inventory.database.GoopObjects[1]);
-            inventory.addItem(inventory.database.GoopObjects[2]);
-            inventory.addItem(inventory.database.GoopObjects[3]);
-
+            inventory.Clear();
             for (int i = 0; i < 4; i++)
             {
                 inventory.database.GoopObjects[i].ResetValues();
+                inventory.addItem(inventory.database.GoopObjects[i]);
             }
         }
+        inventory.sortInventoryDefault();
+        inventory.Save();
     }
 
     private void Update()
