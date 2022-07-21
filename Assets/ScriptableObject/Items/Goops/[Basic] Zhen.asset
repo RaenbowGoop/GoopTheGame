@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7714de91462fd9b41a8ab757fbb5e95b, type: 3}
+  m_Name: '[Basic] Zhen'
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 21300000, guid: 528514e7ce926d740bbb6fed6d546c07, type: 3}
+  prefab: {fileID: -3031606187923333353, guid: 17181d982bed46b4b90b0d4e483b2134, type: 3}
+  type: 0
+  description: 'It''s Zhen, but Goop! :P
+
+'
+  uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Zhen
+  prefabPath: Prefab\UI\6StarInventoryItem
+  goopFaction: Back to the Basics
+  goopName: Zhen
+  goopLevel: 1
+  goopLevelCap: 10
+  goopRarity: 6
+  goopDuplicates: 0
+  goopHealth: 15
+  goopAttack: 3
+  goopDefense: 0
+  goopAttackInterval: 1.5
+  goopCastTime: 0.4
+  goopDC: 100
+  goopCDT: 5
+  knockbackLimit: 0
