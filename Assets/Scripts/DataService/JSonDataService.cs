@@ -18,7 +18,7 @@ public class JSonDataService : IDataService
             }
             using FileStream stream = File.Create(path);
             stream.Close();
-            File.WriteAllText(path, JsonConvert.SerializeObject(Data,
+            File.WriteAllText(path, JsonConvert.SerializeObject(Data, Formatting.Indented,
                 new JsonSerializerSettings()
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore

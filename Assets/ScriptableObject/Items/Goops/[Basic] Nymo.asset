@@ -13,24 +13,25 @@ MonoBehaviour:
   m_Name: '[Basic] Nymo'
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: a734a0a8d6f50644c90c67f51923936b, type: 3}
-  prefab: {fileID: -3031606187923333353, guid: 7e5ab9350cfb3094f91da043ca904090, type: 3}
+  prefab: {fileID: -3031606187923333353, guid: 17181d982bed46b4b90b0d4e483b2134, type: 3}
   type: 0
   description: 'It''s Basic, but Nymo! (8
 
 '
   uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Nymo
-  prefabPath: Prefab\UI\5StarInventoryItem
+  prefabPath: Prefab\UI\6StarInventoryItem
   goopFaction: Back to the Basics
   goopName: Nymo
   goopLevel: 1
   goopLevelCap: 10
-  goopRarity: 5
+  goopRarity: 6
   goopDuplicates: 0
-  goopHealth: 15
-  goopAttack: 3
-  goopDefense: 0
+  goopHealth: 1578
+  goopAttack: 223
+  goopDefense: 432
+  goopSpeed: 20
   goopAttackInterval: 1.5
   goopCastTime: 0.4
-  goopDC: 100
-  goopCDT: 5
+  goopDC: 200
+  goopCDT: 15
   knockbackLimit: 0

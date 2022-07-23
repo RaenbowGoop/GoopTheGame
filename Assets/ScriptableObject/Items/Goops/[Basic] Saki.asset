@@ -24,11 +24,12 @@ MonoBehaviour:
   goopLevelCap: 10
   goopRarity: 5
   goopDuplicates: 0
-  goopHealth: 15
-  goopAttack: 3
-  goopDefense: 0
+  goopHealth: 1690
+  goopAttack: 169
+  goopDefense: 69
+  goopSpeed: 20
   goopAttackInterval: 1.5
   goopCastTime: 0.4
-  goopDC: 100
-  goopCDT: 5
+  goopDC: 200
+  goopCDT: 15
   knockbackLimit: 0
