@@ -16,9 +16,10 @@ public class GoopObject : ItemObject
     [JsonProperty] public int goopRarity;
     [JsonProperty] public int goopDuplicates; // number of duplicate units aquired. used for bonus levels
 
-    [JsonProperty] public int goopHealth;
-    [JsonProperty] public int goopAttack;
-    [JsonProperty] public int goopDefense;
+    [JsonProperty] public double goopHealth;
+    [JsonProperty] public double goopAttack;
+    [JsonProperty] public double goopDefense;
+    [JsonProperty] public int goopSpeed;
     [JsonProperty] public float goopAttackInterval; //Attack Speed
     [JsonProperty] public float goopCastTime; //Attack Cast Time
     [JsonProperty] public int goopDC;  //Deployment Cost
@@ -52,10 +53,22 @@ public class GoopObject : ItemObject
         goopDuplicates = 0;
     }
 
-    public void CalculateStats()
+    public double CalculateHealth()
     {
-
+        return goopHealth * (1 + (goopLevel - 1) * 0.1 + (goopDuplicates * 0.1));
     }
+
+    public double CalculateAttack()
+    {
+        return goopAttack * (1 + (goopLevel - 1) * 0.1 + (goopDuplicates * 0.1));
+    }
+
+    public double CalculateDefense()
+    {
+        return goopDefense * (1 + (goopLevel - 1) * 0.1 + (goopDuplicates * 0.1));
+    }
+
+
     public override bool Equals(object obj)
     {
         GoopObject item = obj as GoopObject;

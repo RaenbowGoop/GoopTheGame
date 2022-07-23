@@ -16,12 +16,12 @@ MonoBehaviour:
   prefab: {fileID: -3031606187923333353, guid: f469c954b018dd545801ea6316b9156c, type: 3}
   type: 0
   description: It's the Oracle...but baby?
-  uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Shiny
+  uiDisplayPath: GoopGraphics\GoopSprites\[The Hut] The Oracle
   prefabPath: Prefab\UI\4StarInventoryItem
   goopFaction: The Hut
   goopName: The Oracle
   goopLevel: 0
-  goopLevelCap: 0
+  goopLevelCap: 10
   goopRarity: 0
   goopDuplicates: 0
   goopHealth: 0

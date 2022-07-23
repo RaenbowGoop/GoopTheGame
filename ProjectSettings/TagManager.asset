@@ -6,6 +6,8 @@ TagManager:
   tags:
   - BGM
   - SFX
+  - UnitDisplay
+  - GoopCurrency
   layers:
   - Default
   - TransparentFX
