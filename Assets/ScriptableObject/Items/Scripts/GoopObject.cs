@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 [JsonObject(MemberSerialization.OptIn)]
 [CreateAssetMenu(fileName = "New Goop Object", menuName = "Inventory System/Items/Goop")]
-public class GoopObject : ItemObject
+public class GoopObject : ItemObject, System.IEquatable<GoopObject>
 {
     //public Animator goopAnimator;
 
@@ -31,20 +31,6 @@ public class GoopObject : ItemObject
     public void Awake()
     {
         type = ItemType.Goop;
-        
-
-        if (goopRarity == 6)
-        {
-            prefabPath = "Prefab\\UI\\6StarInventoryItem";
-        }
-        else if (goopRarity == 5)
-        {
-            prefabPath = "Prefab\\UI\\5StarInventoryItem";
-        }
-        else
-        {
-            prefabPath = "Prefab\\UI\\4StarInventoryItem";
-        }
     }
 
     public void ResetValues()
@@ -68,17 +54,26 @@ public class GoopObject : ItemObject
         return goopDefense * (1 + (goopLevel - 1) * 0.1 + (goopDuplicates * 0.1));
     }
 
-
-    public override bool Equals(object obj)
+    public bool Equals(GoopObject other)
     {
-        GoopObject item = obj as GoopObject;
-
-        if (item == null)
+        if (other == null)
         {
             return false;
         }
+        return this.goopFaction == other.goopFaction && this.goopName == other.goopName;
+    }
 
-        return this.goopFaction == item.goopFaction && this.goopName == item.goopName;
+    public int CompareTo(GoopObject other)
+    {
+        if (other == null)
+        {
+            return 1;
+        }
+        else if (this.goopFaction == other.goopFaction && this.goopName == other.goopName)
+        {
+            return 0;
+        }
+        return -1;
     }
 
     //used to sort GoopObjects
@@ -161,4 +156,5 @@ public class GoopObject : ItemObject
     {
         return other.goopName.CompareTo(this.goopName);
     }
+
 }
