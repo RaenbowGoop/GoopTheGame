@@ -1,7 +1,10 @@
 # GoopTheGame
 its goop, but game.
 
-created by Allyson Le and Amanda Le.
+Developed by Allyson Le (Saki) and Amanda Le (Shiny).
 
-# Credits
-Sappheiros - Awake
+# Credits 
+## Sappheiros - Awake
+## Joe Alfaraby (Mixroba Studio) - Free Country Instrumental Music
+
+
