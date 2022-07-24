@@ -5,7 +5,7 @@ Developed by Allyson Le (Saki) and Amanda Le (Shiny).
 
 # Credits 
 ## Music
- Sappheiros - Awake \n
+ Sappheiros - Awake 
  Joe Alfaraby (Mixroba Studio) - Free Country Instrumental Music
 
 ## Fonts
