@@ -28,4 +28,16 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
     {
 
     }
+
+    public GoopObject getMatchingGoop(GoopObject goopItem)
+    {
+        foreach(var item in GetId)
+        {
+            if(goopItem.Equals(item.Key))
+            {
+                return item.Key;
+            }
+        }
+        return null;
+    }
 }

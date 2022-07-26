@@ -19,7 +19,7 @@ MonoBehaviour:
 
 '
   uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Nymo
-  prefabPath: Prefab\UI\6StarInventoryItem
+  prefabPath: Prefab\UI\InventorySlots\6StarInventoryItem
   goopFaction: Back to the Basics
   goopName: Nymo
   goopLevel: 1

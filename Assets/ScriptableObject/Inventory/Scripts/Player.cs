@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public InventoryObject inventory;
+    public InventoryObject lineup;
     private int numOfGoopPotions;
     private int numOfGoopBucks;
 
@@ -24,6 +25,10 @@ public class Player : MonoBehaviour
         //saving inventory
         inventory.Save();
         inventory.container.Items.Clear();
+
+        //saving lineup
+        lineup.Save();
+        lineup.container.Items.Clear();
 
         //saving currency
         PlayerPrefs.SetInt("numOfGoopPotions", numOfGoopPotions);
@@ -50,15 +55,13 @@ public class Player : MonoBehaviour
         //LOADING CURRENCY
         numOfGoopBucks = PlayerPrefs.GetInt("numOfGoopBucks", 0);
         numOfGoopPotions = PlayerPrefs.GetInt("numOfGoopPotions", 0);
+
+        //LOADING LINEUP
+        lineup.Load();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Backspace))
-        {
-            inventory.Save();
-            inventory.Load();
-        }
     }
 
     public int getGoopPotions()

@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: '[The Hut] The Oracle'
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 14fcb6c004241b9489ddaffac79c20ce, type: 3}
-  prefab: {fileID: -3031606187923333353, guid: f469c954b018dd545801ea6316b9156c, type: 3}
+  inventoryPrefab: {fileID: 0}
   type: 0
-  description: It's the Oracle...but baby?
+  description: It's the Oracle... but baby?
   uiDisplayPath: GoopGraphics\GoopSprites\[The Hut] The Oracle
-  prefabPath: Prefab\UI\4StarInventoryItem
   goopFaction: The Hut
   goopName: The Oracle
-  goopLevel: 0
+  goopLevel: 1
   goopLevelCap: 10
-  goopRarity: 0
+  goopRarity: 4
   goopDuplicates: 0
-  goopHealth: 0
-  goopAttack: 0
-  goopDefense: 0
-  goopAttackInterval: 0
-  goopCastTime: 0
-  goopDC: 0
-  goopCDT: 0
-  knockbackLimit: 0
+  goopHealth: 908
+  goopAttack: 908
+  goopDefense: 908
+  goopSpeed: 908
+  goopAttackInterval: 908
+  goopCastTime: 908
+  goopDC: 908
+  goopCDT: 908
+  knockbackLimit: 908

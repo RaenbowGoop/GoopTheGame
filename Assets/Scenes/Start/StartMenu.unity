@@ -833,6 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: a12ea9c78482e4d49b3b878f5b506978, type: 2}
+  lineup: {fileID: 11400000, guid: 5d89fa3374c7bca4a8ea471f99d9ba92, type: 2}
 --- !u!4 &1239286654
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,6 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

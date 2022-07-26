@@ -17,7 +17,6 @@ public class InventoryObject : ScriptableObject
 
     public void addItem(GoopObject _item)
     {
-        Debug.Log("adding new unit");
         for (int count = 0; count < container.Items.Count; count++)
         {
             //returns from function if object is already in container
@@ -30,11 +29,16 @@ public class InventoryObject : ScriptableObject
                 return; 
             }
         }
-        Debug.Log("No dups");
         container.Items.Add(new InventorySlot(database.GetId[_item], _item));
         container.Items.Sort();
         Save();
         Load();
+    }
+
+    public void removeItem(InventorySlot _item)
+    {
+        container.Items.Remove(_item);
+        Save();
     }
 
     public void sortInventoryDefault()
@@ -71,7 +75,6 @@ public class InventoryObject : ScriptableObject
         for (int i = 0; i < container.Items.Count; i++)
         {
             container.Items[i].item.uiDisplay = Resources.Load<Sprite>(container.Items[i].item.uiDisplayPath);
-            container.Items[i].item.prefab = Resources.Load<GameObject>(container.Items[i].item.prefabPath);
         }
     }
     [ContextMenu("Clear")]
@@ -83,7 +86,7 @@ public class InventoryObject : ScriptableObject
 
 [JsonObject(MemberSerialization.OptIn)]
 [System.Serializable]
-public class InventorySlot : IComparable<InventorySlot>
+public class InventorySlot : IComparable<InventorySlot>, IEquatable<InventorySlot>
 {
     [JsonProperty] public int ID;
     [JsonProperty] public GoopObject item;
@@ -96,6 +99,11 @@ public class InventorySlot : IComparable<InventorySlot>
     public int CompareTo(InventorySlot other)
     {
         return this.item.CompareGoopObjectDefault(other.item);
+    }
+
+    public bool Equals(InventorySlot other)
+    {
+        return this.item.Equals(other.item);
     }
 }
 
