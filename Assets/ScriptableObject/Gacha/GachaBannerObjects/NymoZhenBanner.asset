@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bad9153e91ae7f41bb6df1d91e62cda, type: 3}
+  m_Name: NymoZhenBanner
+  m_EditorClassIdentifier: 
+  type: 0
+  name: Brobros
+  description: brobros are so kool, it's crazy
+  rate6Star: 10
+  rate5Star: 25
+  rate4Star: 65
+  bannerArt: {fileID: 0}
+  bannerIcon: {fileID: 0}
+  bannerArtPath: 
+  bannerIconPath: 
+  rateUpUnitIDs: 0200000003000000

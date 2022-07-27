@@ -10,16 +10,12 @@ public class LineUpManager : MonoBehaviour
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
 
     //prefabs
-    GameObject sixStarPrefab;
-    GameObject fiveStarPrefab;
-    GameObject fourStarPrefab;
+    GameObject displayPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        sixStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\EquipSlots\\6StarEquipItem");
-        fiveStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\EquipSlots\\5StarEquipItem");
-        fourStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\EquipSlots\\4StarEquipItem");
+        displayPrefab = Resources.Load<GameObject>("Prefab\\UI\\LineUp\\LineUpDisplay");
     }
 
     // Update is called once per frame
@@ -43,24 +39,12 @@ public class LineUpManager : MonoBehaviour
             InventorySlot key = findInventorySlotMatchinDictionary(slot);
             if (key == null)
             {
-                GameObject obj;
-                if (slot.item.goopRarity == 6)
-                {
-                    obj = Instantiate(sixStarPrefab, Vector3.zero, transform.rotation * Quaternion.Euler(0f, 0f, 0f), transform);
-                }
-                else if (slot.item.goopRarity == 5)
-                {
-                    obj = Instantiate(fiveStarPrefab, Vector3.zero, transform.rotation * Quaternion.Euler(0f, 0f, 0f), transform);
-                }
-                else
-                {
-                    obj = Instantiate(fourStarPrefab, Vector3.zero, transform.rotation * Quaternion.Euler(0f, 0f, 0f), transform);
-                }
-
+                GameObject obj = Instantiate(displayPrefab, Vector3.zero, transform.rotation * Quaternion.Euler(0f, 0f, 0f), transform);
+                
                 obj.transform.localScale = new Vector3(.69f, .69f, .69f);
-                obj.transform.GetChild(1).GetChild(0).GetComponentInChildren<Image>().sprite = slot.item.uiDisplay;
+                obj.transform.GetChild(2).GetChild(0).GetComponentInChildren<Image>().sprite = slot.item.uiDisplay;
                 obj.transform.GetChild(3).GetComponentInChildren<TextMeshProUGUI>().text = slot.item.goopDC.ToString("n0");
-                obj.transform.GetChild(1).GetChild(0).GetComponentInChildren<Button>().onClick.AddListener(() => removeUnit(slot)); 
+                obj.transform.GetChild(2).GetChild(0).GetComponentInChildren<Button>().onClick.AddListener(() => removeUnit(slot)); 
 
                 itemsDisplayed.Add(slot, obj);
             }

@@ -144,16 +144,16 @@ public class EquipInventoryManager : MonoBehaviour
 
         if (unitDisplay != null)
         {
-            unitDisplay.transform.GetChild(0).GetComponent<Image>().sprite = goop.uiDisplay;
-            unitDisplay.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().text = goop.description;
+            unitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = goop.uiDisplay;
+            unitDisplay.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = goop.description;
 
             //Displaying Faction and Goop Names
-            unitDisplay.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = goop.goopFaction;
-            unitDisplay.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text = goop.goopName;
+            unitDisplay.transform.GetChild(4).GetChild(0).GetComponent<TextMeshProUGUI>().text = goop.goopFaction;
+            unitDisplay.transform.GetChild(4).GetChild(1).GetComponent<TextMeshProUGUI>().text = goop.goopName;
 
             //Displaying Level and Stats
             float attackSpeed = 1.0f / (goop.goopAttackInterval + goop.goopCastTime);
-            unitDisplay.transform.GetChild(3).GetChild(2).GetComponent<TextMeshProUGUI>().text =
+            unitDisplay.transform.GetChild(4).GetChild(2).GetComponent<TextMeshProUGUI>().text =
                 goop.CalculateHealth() + "\n" + goop.CalculateAttack() + "\n" + goop.CalculateDefense() + "\n" + goop.goopSpeed + "\n"
                 + attackSpeed.ToString("0.##") + "/s" + "\n" + goop.goopDC + "\n" + goop.goopCDT;
 

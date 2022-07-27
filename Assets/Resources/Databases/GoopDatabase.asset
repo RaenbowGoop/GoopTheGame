@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e4be632139e8df419752e6dd2c215fb, type: 3}
-  m_Name: Database
+  m_Name: GoopDatabase
   m_EditorClassIdentifier: 
   GoopObjects:
   - {fileID: 11400000, guid: 39b82a6a62f47a444a9a09d787cd4bc5, type: 2}

@@ -14,7 +14,7 @@ public enum ItemType
 public abstract class ItemObject : ScriptableObject
 {
     public Sprite uiDisplay; //for inventory
-    public GameObject inventoryPrefab;
+    //public GameObject inventoryPrefab;
     [JsonProperty] public ItemType type;
     [TextArea(15, 20)]
     [JsonProperty] public string description;
