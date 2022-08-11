@@ -12,14 +12,14 @@ public enum BannerType
 public abstract class GachaBannerObject : ScriptableObject
 {
     public BannerType type;
-    public string name;
-    public string description;
+    public string bannerName;
+    public string bannerDescription;
     public int rate6Star = 10;
     public int rate5Star = 25;
     public int rate4Star = 65;
 
     public Sprite bannerArt;
     public Sprite bannerIcon;
-    public string bannerArtPath;
-    public string bannerIconPath;
+
+    public abstract bool isRateUp(GoopObject goop);
 }

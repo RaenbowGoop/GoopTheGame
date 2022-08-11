@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GachaBannerDatabase
   m_EditorClassIdentifier: 
   gachaBanners:
-  - {fileID: 11400000, guid: 8b69e27923aad1a4f84f9364a43af4f0, type: 2}
-  - {fileID: 11400000, guid: b7bca2f0233d4e146b5f118c4e3c8788, type: 2}
-  - {fileID: 11400000, guid: 307fca33cce4da041b60f46b8b674831, type: 2}
+  - {fileID: 11400000, guid: bc9bb71249e017f4c942f7aa5b78b283, type: 2}
+  - {fileID: 11400000, guid: 365dd6dbd3f052f4e9a800ff54005a07, type: 2}
+  - {fileID: 11400000, guid: 6688e9431a931074eaa048a53cc8e7f9, type: 2}
   currentBanners:
   - Back to the Basics
-  - Standard Banner
+  - Standard

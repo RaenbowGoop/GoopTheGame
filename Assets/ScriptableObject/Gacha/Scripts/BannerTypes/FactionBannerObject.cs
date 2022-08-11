@@ -7,8 +7,13 @@ public class FactionBannerObject : GachaBannerObject
 {
     public string bannerFaction;
 
-    void OnAwake()
+    void Awake()
     {
         type = BannerType.Faction;
+    }
+
+    public override bool isRateUp(GoopObject goop)
+    {
+        return goop.goopFaction == bannerFaction;
     }
 }

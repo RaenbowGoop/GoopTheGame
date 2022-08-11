@@ -77,20 +77,30 @@ public class Player : MonoBehaviour
     public void addGoopPotions(int amount)
     {
         numOfGoopPotions += amount;
+        PlayerPrefs.SetInt("numOfGoopPotions", numOfGoopPotions);
     }
 
     public void addGoopBucks(int amount)
     {
         numOfGoopBucks += amount;
+        PlayerPrefs.SetInt("numOfGoopBucks", numOfGoopBucks);
     }
 
     public void subtractGoopPotions(int amount)
     {
         numOfGoopPotions -= amount;
+        PlayerPrefs.SetInt("numOfGoopPotions", numOfGoopPotions);
     }
 
     public void subtractGoopBucks(int amount)
     {
         numOfGoopBucks -= amount;
+        PlayerPrefs.SetInt("numOfGoopBucks", numOfGoopBucks);
+    }
+
+    // ONLY FOR TESTING PURPOSES
+    public void setGoopBucks(int amount)
+    {
+        numOfGoopBucks = amount;
     }
 }

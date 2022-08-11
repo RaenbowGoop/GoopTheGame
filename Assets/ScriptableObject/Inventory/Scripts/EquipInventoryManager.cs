@@ -22,6 +22,7 @@ public class EquipInventoryManager : MonoBehaviour
         sixStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\InventorySlots\\6StarInventoryItem");
         fiveStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\InventorySlots\\5StarInventoryItem");
         fourStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\InventorySlots\\4StarInventoryItem");
+        inventory.sortInventoryDefault();
     }
 
     // Update is called once per frame
