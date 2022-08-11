@@ -13,12 +13,10 @@ MonoBehaviour:
   m_Name: StandardBanner
   m_EditorClassIdentifier: 
   type: 0
-  name: Standard Banner
-  description: '"Everygoop Gooprywhere all at Goop" -Domjaticus Maximus'
+  bannerName: Standard
+  bannerDescription: A little bit of this, and a little bit of that
   rate6Star: 10
   rate5Star: 25
   rate4Star: 65
-  bannerArt: {fileID: 0}
-  bannerIcon: {fileID: 0}
-  bannerArtPath: 
-  bannerIconPath: 
+  bannerArt: {fileID: 21300000, guid: 512c32616f28bdd459df824b72a6cb52, type: 3}
+  bannerIcon: {fileID: 21300000, guid: f541043c06816734fa20d2d3366abcd6, type: 3}

@@ -86,16 +86,24 @@ public class GoopObject : ItemObject, System.IEquatable<GoopObject>
         } 
         else
         {
-            int currentComparison = CompareByRarity(other);
+            int currentComparison = CompareByLevel(other);
             if (currentComparison == 0)
             {
-                currentComparison = CompareByFaction(other);
+                currentComparison = CompareByRarity(other);
                 if (currentComparison == 0)
                 {
-                    currentComparison = CompareByLevel(other);
+                    currentComparison = CompareByDuplicates(other);
                     if (currentComparison == 0)
                     {
-                        return CompareByName(other);
+                        currentComparison = CompareByFaction(other);
+                        if (currentComparison == 0)
+                        {
+                            return CompareByName(other);
+                        }
+                        else
+                        {
+                            return currentComparison;
+                        }
                     }
                     else
                     {
@@ -138,11 +146,27 @@ public class GoopObject : ItemObject, System.IEquatable<GoopObject>
 
     public int CompareByLevel(GoopObject other)
     {
-        if (this.goopLevel + this.goopDuplicates == other.goopLevel + other.goopDuplicates)
+        if (this.goopLevel == other.goopLevel)
         {
             return 0;
         }
-        else if (this.goopLevel + this.goopDuplicates > other.goopLevel + other.goopDuplicates)
+        else if (this.goopLevel > other.goopLevel)
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+
+    public int CompareByDuplicates(GoopObject other)
+    {
+        if (this.goopDuplicates == other.goopDuplicates)
+        {
+            return 0;
+        }
+        else if (this.goopDuplicates > other.goopDuplicates)
         {
             return -1;
         }
@@ -154,7 +178,6 @@ public class GoopObject : ItemObject, System.IEquatable<GoopObject>
 
     public int CompareByName(GoopObject other)
     {
-        return other.goopName.CompareTo(this.goopName);
+        return this.goopName.CompareTo(other.goopName);
     }
-
 }
