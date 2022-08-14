@@ -35,8 +35,6 @@ public class SceneChanger : MonoBehaviour
         Destroy(audio);
 
         StartCoroutine(LoadLevel("StartMenu"));
-
-
     }
 
     //change to Options Scene
@@ -55,12 +53,28 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadLevel("MainMenu"));
     }
 
-    public void LoadGachaMenu()
+    public void LoadGachaMenuFromGachaResults()
     {
         GameObject obj = GameObject.FindWithTag("PullResults");
         Destroy(obj);
 
         StartCoroutine(LoadLevel("GachaMenu"));
+    }
+
+    public void LoadGachaMenuFromMainMenu()
+    {
+        GameObject audio = GameObject.Find("MainMenuBGM");
+        Destroy(audio);
+
+        StartCoroutine(LoadLevel("GachaMenu"));
+    }
+
+    public void LoadMainMenuFromGachaMenu()
+    {
+        GameObject obj = GameObject.FindWithTag("PullResults");
+        Destroy(obj);
+
+        StartCoroutine(LoadLevel("MainMenu"));
     }
 
     //function to quit game
