@@ -9,6 +9,10 @@ public class GachaHandler : MonoBehaviour
     // Player Properties
     public GameObject player;
     private Player playerScript;
+    public GameObject sceneChanger;
+    private SceneChanger sceneChangerScript;
+    public GameObject pullResultsObj;
+    private PullResults pullResultsScript;
 
     // Banner Properties
     public GachaBannerObject currentBanner;
@@ -25,7 +29,6 @@ public class GachaHandler : MonoBehaviour
     public GameObject confirmPullDisplay;
 
     // Pull Results
-    List<GoopObject> pullResults;
     System.Random randNumGen;
 
     Dictionary<string, GameObject> bannerIcons = new Dictionary<string, GameObject>();
@@ -66,8 +69,12 @@ public class GachaHandler : MonoBehaviour
         //Setting up RNG
         randNumGen = new System.Random();
 
+        //Setting up scripts
+        sceneChangerScript = sceneChanger.GetComponent<SceneChanger>();
+        pullResultsScript = pullResultsObj.GetComponent<PullResults>();
+
         //Setting up pull result container
-        pullResults = new List<GoopObject>();
+        pullResultsScript.pullResults = new List<GoopObject>();
 
         /* FOR PRINTING POOL
         Debug.Log("rateup 6 stars");
@@ -234,6 +241,8 @@ public class GachaHandler : MonoBehaviour
                 .text = "Spend " + numberOfPulls * 300 + " GoopBucks\n" + "to perform x" + numberOfPulls + " pull";
             confirmPullDisplay.transform.GetChild(1).GetChild(0)
                 .GetComponent<Button>().onClick.AddListener(() => pullGoop(numberOfPulls));
+            confirmPullDisplay.transform.GetChild(1).GetChild(0)
+                .GetComponent<Button>().onClick.AddListener(() => sceneChangerScript.LoadScene("GachaResultsScreen"));
         }
     }
 
@@ -248,7 +257,7 @@ public class GachaHandler : MonoBehaviour
     {
         hideConfirmPullDisplay();
 
-        pullResults.Clear();
+        pullResultsScript.pullResults.Clear();
         playerScript.subtractGoopBucks(300 * numOfPulls);
         GameObject.FindWithTag("GoopCurrency").transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerScript.getGoopBucks().ToString();
         
@@ -259,13 +268,13 @@ public class GachaHandler : MonoBehaviour
             if (num <= currentBanner.rate4Star)
             {
                 index = randNumGen.Next(0, fourStarUnits.Count);
-                pullResults.Add(fourStarUnits[index]);
+                pullResultsScript.pullResults.Add(fourStarUnits[index]);
                 playerScript.inventory.addItem(fourStarUnits[index]);
             }
             else if (num <= currentBanner.rate4Star + currentBanner.rate5Star)
             {
                 index = randNumGen.Next(0, fiveStarUnits.Count);
-                pullResults.Add(fiveStarUnits[index]);
+                pullResultsScript.pullResults.Add(fiveStarUnits[index]);
                 playerScript.inventory.addItem(fiveStarUnits[index]);
             }
             else
@@ -273,7 +282,7 @@ public class GachaHandler : MonoBehaviour
                 if (rateUpSixStarUnits.Count == 0)
                 {
                     index = randNumGen.Next(0, sixStarUnits.Count);
-                    pullResults.Add(sixStarUnits[index]);
+                    pullResultsScript.pullResults.Add(sixStarUnits[index]);
                     playerScript.inventory.addItem(sixStarUnits[index]);
                 }
                 else
@@ -282,22 +291,22 @@ public class GachaHandler : MonoBehaviour
                     if (num == 1)
                     {
                         index = randNumGen.Next(0, sixStarUnits.Count);
-                        pullResults.Add(sixStarUnits[index]);
+                        pullResultsScript.pullResults.Add(sixStarUnits[index]);
                         playerScript.inventory.addItem(sixStarUnits[index]);
                     }
                     else
                     {
                         index = randNumGen.Next(0, rateUpSixStarUnits.Count);
-                        pullResults.Add(rateUpSixStarUnits[index]);
+                        pullResultsScript.pullResults.Add(rateUpSixStarUnits[index]);
                         playerScript.inventory.addItem(rateUpSixStarUnits[index]);
                     }
                 }
             }
         }
 
-        foreach(GoopObject item in pullResults)
+        foreach(GoopObject item in pullResultsScript.pullResults)
         {
-            Debug.Log(item.goopFaction + " " + item.goopName);
+            //Debug.Log(item.goopFaction + " " + item.goopName);
         }
     }
 }

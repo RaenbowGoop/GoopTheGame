@@ -55,6 +55,14 @@ public class SceneChanger : MonoBehaviour
         StartCoroutine(LoadLevel("MainMenu"));
     }
 
+    public void LoadGachaMenu()
+    {
+        GameObject obj = GameObject.FindWithTag("PullResults");
+        Destroy(obj);
+
+        StartCoroutine(LoadLevel("GachaMenu"));
+    }
+
     //function to quit game
     public void QuitGame()
     {

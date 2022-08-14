@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main/GoopsMenu.unity
     guid: 25e096bf999a9e8419dca5424a43c0e1
+  - enabled: 1
+    path: Assets/Scenes/Main/GachaResultsScreen.unity
+    guid: a45e5c8313d73e842a31c0f902eba54f
   m_configObjects: {}
