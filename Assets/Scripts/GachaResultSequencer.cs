@@ -7,12 +7,16 @@ using TMPro;
 
 public class GachaResultSequencer : MonoBehaviour
 {
-    public VideoPlayer openingAnimation;
+    public GameObject openingAnimationGO;
     public VideoPlayer petalTransition;
-    public VideoPlayer backgroundAnimation;
+    public GameObject backgroundAnimationGO;
+
+    VideoPlayer openingAnimation;
+    VideoPlayer backgroundAnimation;
 
     bool introIsOver;
     bool unitAnimationIsOver;
+    bool isShowingAllResults;
 
     public GameObject unitArtGO;
     public GameObject skipAllButton;
@@ -39,7 +43,21 @@ public class GachaResultSequencer : MonoBehaviour
 
         introIsOver = false;
         unitAnimationIsOver = false;
+        isShowingAllResults = false;
 
+        int highestRarity = GameObject.FindWithTag("PullResults").GetComponent<PullResults>().highestRarity;
+        if (highestRarity == 6)
+        {
+            openingAnimation = openingAnimationGO.transform.GetChild(0).GetComponent<VideoPlayer>();
+        }
+        else if (highestRarity == 5)
+        {
+            openingAnimation = openingAnimationGO.transform.GetChild(1).GetComponent<VideoPlayer>();
+        }
+        else
+        {
+            openingAnimation = openingAnimationGO.transform.GetChild(2).GetComponent<VideoPlayer>();
+        }
         openingAnimation.Play();
         openingAnimation.loopPointReached += CheckOver; 
 
@@ -58,6 +76,19 @@ public class GachaResultSequencer : MonoBehaviour
             {
                 unitArtGO.SetActive(true);
                 unitArtGO.transform.GetChild(0).GetComponent<Image>().sprite = units[currentIndex].uiDisplay;
+
+                if(units[currentIndex].goopRarity == 6)
+                {
+                    backgroundAnimation = backgroundAnimationGO.transform.GetChild(0).GetComponent<VideoPlayer>();
+                }
+                else if (units[currentIndex].goopRarity == 5)
+                {
+                    backgroundAnimation = backgroundAnimationGO.transform.GetChild(1).GetComponent<VideoPlayer>();
+                }
+                else
+                {
+                    backgroundAnimation = backgroundAnimationGO.transform.GetChild(2).GetComponent<VideoPlayer>();
+                }
 
                 //Play animation
                 petalTransition.Play();
@@ -83,7 +114,7 @@ public class GachaResultSequencer : MonoBehaviour
                 time = time + 1f * Time.deltaTime;
             }
         }
-        else if (unitAnimationIsOver)
+        else if (unitAnimationIsOver && !isShowingAllResults)
         {
             skipAllButton.GetComponent<Image>().enabled = false;
             skipSingleButton.GetComponent<Image>().enabled = false;
@@ -93,6 +124,10 @@ public class GachaResultSequencer : MonoBehaviour
 
             BackToGachaButton.GetComponent<Image>().enabled = true;
             BackToGachaButton.GetComponent<Button>().enabled = true;
+
+            //DISPLAY PULL RESULTS ON LAST SCREEN
+
+            isShowingAllResults = true;
         }
     }
 
@@ -116,11 +151,6 @@ public class GachaResultSequencer : MonoBehaviour
             introIsOver = true;
         }
         time = timeDelay;
-        currentIndex = units.Count;
-        skipAllButton.GetComponent<Image>().enabled = false;
-        skipSingleButton.GetComponent<Image>().enabled = false;
-        skipAllButton.GetComponent<Button>().enabled = false;
-        skipSingleButton.GetComponent<Button>().enabled = false;
-        skipAllButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().enabled = false;
+        currentIndex = units.Count - 1;
     }
 }

@@ -265,19 +265,23 @@ public class GachaHandler : MonoBehaviour
         {
             int num = randNumGen.Next(1, 101);
             int index = -1;
-            if (num <= currentBanner.rate4Star)
+            if (num <= currentBanner.rate4Star) //pulling 4 stars
             {
                 index = randNumGen.Next(0, fourStarUnits.Count);
                 pullResultsScript.pullResults.Add(fourStarUnits[index]);
                 playerScript.inventory.addItem(fourStarUnits[index]);
             }
-            else if (num <= currentBanner.rate4Star + currentBanner.rate5Star)
+            else if (num <= currentBanner.rate4Star + currentBanner.rate5Star) //pulling 5 stars
             {
                 index = randNumGen.Next(0, fiveStarUnits.Count);
                 pullResultsScript.pullResults.Add(fiveStarUnits[index]);
                 playerScript.inventory.addItem(fiveStarUnits[index]);
+                if (pullResultsScript.highestRarity < 5)
+                {
+                    pullResultsScript.highestRarity = 5;
+                } 
             }
-            else
+            else //pulling 6 stars
             {
                 if (rateUpSixStarUnits.Count == 0)
                 {
@@ -300,6 +304,11 @@ public class GachaHandler : MonoBehaviour
                         pullResultsScript.pullResults.Add(rateUpSixStarUnits[index]);
                         playerScript.inventory.addItem(rateUpSixStarUnits[index]);
                     }
+                }
+
+                if (pullResultsScript.highestRarity < 6)
+                {
+                    pullResultsScript.highestRarity = 6;
                 }
             }
         }
