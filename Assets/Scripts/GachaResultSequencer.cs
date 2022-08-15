@@ -99,8 +99,16 @@ public class GachaResultSequencer : MonoBehaviour
             }
             else if (time >= timeDelay)
             {
-                petalTransition.Stop();
-                backgroundAnimation.Stop();
+                if(petalTransition != null)
+                {
+                    petalTransition.Stop();
+                }
+
+                if (backgroundAnimation != null)
+                {
+                    backgroundAnimation.Stop();
+                }
+                
                 time = 0;
                 unitArtGO.SetActive(false);
                 currentIndex = currentIndex + 1;
@@ -133,7 +141,7 @@ public class GachaResultSequencer : MonoBehaviour
 
     public void skipAnimation()
     {
-        if (!introIsOver)
+        if (!introIsOver && openingAnimation != null)
         {
             openingAnimation.Stop();
             introIsOver = true;
@@ -145,7 +153,7 @@ public class GachaResultSequencer : MonoBehaviour
     }
     public void skipAllAnimations()
     {
-        if (!introIsOver)
+        if (!introIsOver && openingAnimation != null)
         {
             openingAnimation.Stop();
             introIsOver = true;
