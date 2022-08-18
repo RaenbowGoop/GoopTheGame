@@ -102,5 +102,6 @@ public class Player : MonoBehaviour
     public void setGoopBucks(int amount)
     {
         numOfGoopBucks = amount;
+        PlayerPrefs.SetInt("numOfGoopBucks", numOfGoopBucks);
     }
 }

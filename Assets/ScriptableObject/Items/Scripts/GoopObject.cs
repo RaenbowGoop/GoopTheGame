@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 public class GoopObject : ItemObject, System.IEquatable<GoopObject>
 {
     //public Animator goopAnimator;
-
+    [JsonProperty] public string[] goopTags;
     [JsonProperty] public string goopFaction;
     [JsonProperty] public string goopName;
     [JsonProperty] public int goopLevel;

@@ -16,6 +16,8 @@ MonoBehaviour:
   type: 0
   description: It's the Oracle... but baby?
   uiDisplayPath: GoopGraphics\GoopSprites\[The Hut] The Oracle
+  goopTags:
+  - Shiny
   goopFaction: The Mansion
   goopName: The Oracle
   goopLevel: 1

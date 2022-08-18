@@ -7,11 +7,15 @@ using TMPro;
 
 public class GachaResultSequencer : MonoBehaviour
 {
+    public GameObject gachaResultsPageUI;
+
     public GameObject openingAnimationGO;
-    public VideoPlayer petalTransition;
+    public GameObject petalTransitionGO;
     public GameObject backgroundAnimationGO;
 
     VideoPlayer openingAnimation;
+    GameObject currentPetalTransitionGO;
+    VideoPlayer petalTransition;
     VideoPlayer backgroundAnimation;
 
     bool introIsOver;
@@ -41,10 +45,13 @@ public class GachaResultSequencer : MonoBehaviour
         unitArtGO.SetActive(false);
         units = GameObject.FindWithTag("PullResults").GetComponent<PullResults>().pullResults;
 
+        gachaResultsPageUI.SetActive(false);
+
         introIsOver = false;
         unitAnimationIsOver = false;
         isShowingAllResults = false;
 
+        // Find highest rarity
         int highestRarity = GameObject.FindWithTag("PullResults").GetComponent<PullResults>().highestRarity;
         if (highestRarity == 6)
         {
@@ -60,7 +67,6 @@ public class GachaResultSequencer : MonoBehaviour
         }
         openingAnimation.Play();
         openingAnimation.loopPointReached += CheckOver; 
-
     }
 
     void CheckOver(VideoPlayer vp)
@@ -74,23 +80,34 @@ public class GachaResultSequencer : MonoBehaviour
         {
             if (time == 0)
             {
+                if(currentPetalTransitionGO != null)
+                {
+                    currentPetalTransitionGO.SetActive(false);
+                }
                 unitArtGO.SetActive(true);
                 unitArtGO.transform.GetChild(0).GetComponent<Image>().sprite = units[currentIndex].uiDisplay;
 
                 if(units[currentIndex].goopRarity == 6)
                 {
                     backgroundAnimation = backgroundAnimationGO.transform.GetChild(0).GetComponent<VideoPlayer>();
+                    currentPetalTransitionGO = petalTransitionGO.transform.GetChild(0).gameObject;
+                    petalTransition = currentPetalTransitionGO.GetComponent<VideoPlayer>();
                 }
                 else if (units[currentIndex].goopRarity == 5)
                 {
                     backgroundAnimation = backgroundAnimationGO.transform.GetChild(1).GetComponent<VideoPlayer>();
+                    currentPetalTransitionGO = petalTransitionGO.transform.GetChild(1).gameObject;
+                    petalTransition = currentPetalTransitionGO.GetComponent<VideoPlayer>();
                 }
                 else
                 {
                     backgroundAnimation = backgroundAnimationGO.transform.GetChild(2).GetComponent<VideoPlayer>();
+                    currentPetalTransitionGO = petalTransitionGO.transform.GetChild(2).gameObject;
+                    petalTransition = currentPetalTransitionGO.GetComponent<VideoPlayer>();
                 }
 
                 //Play animation
+                currentPetalTransitionGO.SetActive(true);
                 petalTransition.Play();
                 backgroundAnimation.Play();
                 spriteAnimation.Play("Base Layer.UnitFade", 0, 0f);
@@ -134,8 +151,10 @@ public class GachaResultSequencer : MonoBehaviour
             BackToGachaButton.GetComponent<Button>().enabled = true;
 
             //DISPLAY PULL RESULTS ON LAST SCREEN
-
             isShowingAllResults = true;
+            gachaResultsPageUI.SetActive(true);
+            GameObject.FindWithTag("PullResults").GetComponent<PullResults>().displayGachaResults();
+
         }
     }
 

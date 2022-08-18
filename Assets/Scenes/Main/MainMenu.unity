@@ -150,9 +150,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164438894}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1595}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1595.0001}
+  m_LocalScale: {x: 0.99964076, y: 0.99964076, z: 0.99964076}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1773816770}
@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -824, y: 453}
-  m_SizeDelta: {x: 188, y: 126}
+  m_AnchoredPosition: {x: -841.2, y: 469.7}
+  m_SizeDelta: {x: 160.22, y: 107.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &164438897
 CanvasRenderer:
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -218,6 +218,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1608320015}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: LoadStartMenuWTransition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 981992677}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -276,7 +288,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1342166276}
           m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: Play
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -495,6 +507,18 @@ MonoBehaviour:
           m_StringArgument: EquipMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 981992677}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &371255717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,9 +636,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonHoverSound
       objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327357963, guid: c2baac27957fe7547931214d5a35cb81, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a4bd407675b51d6449f7a1e064246a5a, type: 3}
     - target: {fileID: 8256909338327358004, guid: c2baac27957fe7547931214d5a35cb81, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8256909338327358004, guid: c2baac27957fe7547931214d5a35cb81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1009,6 +1037,18 @@ MonoBehaviour:
           m_StringArgument: QuestMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 981992677}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &891660684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,6 +1087,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891660680}
   m_CullTransparentMesh: 1
+--- !u!82 &981992677 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8256909338327357963, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+  m_PrefabInstance: {fileID: 1057876147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054823313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1176,63 @@ Transform:
   m_Father: {fileID: 1773816770}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1057876147
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8256909338327357962, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_Name
+      value: ButtonClickSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.12825012
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -39.23007
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327358004, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a964d98abc1a1a0468c4a056c9208fa7, type: 3}
 --- !u!82 &1342166276 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8256909338327357963, guid: c2baac27957fe7547931214d5a35cb81, type: 3}
@@ -1270,6 +1372,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GoopsMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 981992677}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1708233333
@@ -1599,6 +1713,18 @@ MonoBehaviour:
           m_StringArgument: GachaMenu
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 981992677}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1835483293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,7 +1772,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
       propertyPath: m_LocalPosition.x

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: '[Basic] Saki'
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 4a53d09f0356b2e4bac8a12847e0ea6b, type: 3}
-  prefab: {fileID: -3031606187923333353, guid: 7e5ab9350cfb3094f91da043ca904090, type: 3}
   type: 0
   description: 'It''s Saki, But Goop! 0:'
   uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Saki
-  prefabPath: Prefab\UI\5StarInventoryItem
+  goopTags:
+  - Saki
   goopFaction: Back to the Basics
   goopName: Saki
   goopLevel: 1

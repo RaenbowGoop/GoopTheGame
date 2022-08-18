@@ -52,7 +52,10 @@ public class GachaHandler : MonoBehaviour
 
         //Display Goop Bucks
         playerScript = player.GetComponent<Player>();
+
+        // TESTING ONLY
         playerScript.setGoopBucks(30000);
+
         int goopBucks = playerScript.getGoopBucks();
         if(goopBucks > 999999)
         {
@@ -257,7 +260,9 @@ public class GachaHandler : MonoBehaviour
     {
         hideConfirmPullDisplay();
 
-        pullResultsScript.pullResults.Clear();
+        //pullResultsScript.pullResults.Clear();
+        //pullResultsScript.goopObjectIsNew.Clear();
+
         playerScript.subtractGoopBucks(300 * numOfPulls);
         GameObject.FindWithTag("GoopCurrency").transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerScript.getGoopBucks().ToString();
         
@@ -268,12 +273,14 @@ public class GachaHandler : MonoBehaviour
             if (num <= currentBanner.rate4Star) //pulling 4 stars
             {
                 index = randNumGen.Next(0, fourStarUnits.Count);
+                checkIfNew(fourStarUnits[index]);
                 pullResultsScript.pullResults.Add(fourStarUnits[index]);
                 playerScript.inventory.addItem(fourStarUnits[index]);
             }
             else if (num <= currentBanner.rate4Star + currentBanner.rate5Star) //pulling 5 stars
             {
                 index = randNumGen.Next(0, fiveStarUnits.Count);
+                checkIfNew(fiveStarUnits[index]);
                 pullResultsScript.pullResults.Add(fiveStarUnits[index]);
                 playerScript.inventory.addItem(fiveStarUnits[index]);
                 if (pullResultsScript.highestRarity < 5)
@@ -286,6 +293,7 @@ public class GachaHandler : MonoBehaviour
                 if (rateUpSixStarUnits.Count == 0)
                 {
                     index = randNumGen.Next(0, sixStarUnits.Count);
+                    checkIfNew(sixStarUnits[index]);
                     pullResultsScript.pullResults.Add(sixStarUnits[index]);
                     playerScript.inventory.addItem(sixStarUnits[index]);
                 }
@@ -295,12 +303,14 @@ public class GachaHandler : MonoBehaviour
                     if (num == 1)
                     {
                         index = randNumGen.Next(0, sixStarUnits.Count);
+                        checkIfNew(sixStarUnits[index]);
                         pullResultsScript.pullResults.Add(sixStarUnits[index]);
                         playerScript.inventory.addItem(sixStarUnits[index]);
                     }
                     else
                     {
                         index = randNumGen.Next(0, rateUpSixStarUnits.Count);
+                        checkIfNew(rateUpSixStarUnits[index]);
                         pullResultsScript.pullResults.Add(rateUpSixStarUnits[index]);
                         playerScript.inventory.addItem(rateUpSixStarUnits[index]);
                     }
@@ -313,9 +323,25 @@ public class GachaHandler : MonoBehaviour
             }
         }
 
+        /* FOR TESTING PURPOSES
         foreach(GoopObject item in pullResultsScript.pullResults)
         {
             //Debug.Log(item.goopFaction + " " + item.goopName);
         }
+        */
+    }
+
+    void checkIfNew(GoopObject goop)
+    {
+        bool isNew = true;
+        for (int i = 0; i < playerScript.inventory.container.Items.Count; i++)
+        {
+            if (playerScript.inventory.container.Items[i].item.goopFaction == goop.goopFaction && 
+                playerScript.inventory.container.Items[i].item.goopName == goop.goopName)
+            {
+                isNew = false;
+            }
+        }
+        pullResultsScript.goopObjectIsNew.Add(isNew);
     }
 }

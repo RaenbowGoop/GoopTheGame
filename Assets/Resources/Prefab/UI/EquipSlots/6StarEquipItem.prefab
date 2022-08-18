@@ -674,6 +674,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonHoverSound
       objectReference: {fileID: 0}
+    - target: {fileID: 8256909338327357963, guid: c2baac27957fe7547931214d5a35cb81, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bb864e20d2d4d084388fd0c38f65a53f, type: 3}
     - target: {fileID: 8256909338327358004, guid: c2baac27957fe7547931214d5a35cb81, type: 3}
       propertyPath: m_RootOrder
       value: 4

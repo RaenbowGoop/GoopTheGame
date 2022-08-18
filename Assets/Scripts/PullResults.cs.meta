@@ -3,7 +3,10 @@ guid: 61d302777eb03c745bc2d37a1e08dec4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fourStarGachaSlot: {fileID: -3031606187923333353, guid: 61fc2143516c3a14091f780cc2588d0e, type: 3}
+  - fiveStarGachaSlot: {fileID: -3031606187923333353, guid: ed847aa8c6918da498c12d02a3633513, type: 3}
+  - sixStarGachaSlot: {fileID: -3031606187923333353, guid: 634bc6f284101cb4693158c1551d9f9c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: '[Basic] Nymo'
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: a734a0a8d6f50644c90c67f51923936b, type: 3}
-  prefab: {fileID: -3031606187923333353, guid: 17181d982bed46b4b90b0d4e483b2134, type: 3}
   type: 0
   description: 'It''s Basic, but Nymo! (8
 
 '
   uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Nymo
-  prefabPath: Prefab\UI\InventorySlots\6StarInventoryItem
+  goopTags:
+  - Nymo
   goopFaction: Back to the Basics
   goopName: Nymo
   goopLevel: 1

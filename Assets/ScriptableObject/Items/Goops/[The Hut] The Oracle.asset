@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: '[The Hut] The Oracle'
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 14fcb6c004241b9489ddaffac79c20ce, type: 3}
-  inventoryPrefab: {fileID: 0}
   type: 0
   description: It's the Oracle... but baby?
   uiDisplayPath: GoopGraphics\GoopSprites\[The Hut] The Oracle
+  goopTags:
+  - Shiny
   goopFaction: The Hut
   goopName: The Oracle
   goopLevel: 1
