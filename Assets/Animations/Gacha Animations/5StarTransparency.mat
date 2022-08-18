@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Transparency
+  m_Name: 5StarTransparency
   m_Shader: {fileID: 4800000, guid: 4cc927e905bdb454c9b37b5984749afd, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -73,8 +73,8 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Sensitivity: 0.264
-    - _Smooth: 0.193
+    - _Sensitivity: 0.163
+    - _Smooth: 0.54
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -83,6 +83,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MaskCol: {r: 0, g: 0.8117648, b: 0.9921569, a: 1}
+    - _MaskCol: {r: 0.1137255, g: 0, b: 0.9921569, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []

@@ -38,53 +38,6 @@ public class GoopCollectionManager : MonoBehaviour
         UpdateDisplay();
     }
 
-    /*
-    public void CreateDisplay()
-    {
-        Debug.Log(inventory.container.Items.Count);
-        //Creates GoopObjects, sets UI values, and Adds GoopObjects to ItemsDisplayed
-        for (int i = 0; i < inventory.container.Items.Count; i++)
-        {
-            InventorySlot slot = inventory.container.Items[i];
-            int totalLevel = slot.item.goopLevel;
-
-            //Instantiating Goop Object
-            GameObject obj = Instantiate(slot.item.inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            //Setting Ui Display/Sprite
-            obj.transform.GetChild(1).GetChild(0).GetComponentInChildren<Image>().sprite = slot.item.uiDisplay;
-            //Setting level
-            obj.transform.GetChild(5).GetComponentInChildren<TextMeshProUGUI>().text = totalLevel.ToString("n0");
-            //Setting additional level
-            if(slot.item.goopDuplicates > 0)
-            {
-                obj.transform.GetChild(6).GetComponentInChildren<TextMeshProUGUI>().text = slot.item.goopDuplicates.ToString("n0");
-            }
-            else
-            {
-                obj.transform.GetChild(6).GetComponentInChildren<TextMeshProUGUI>().text = "";
-                obj.transform.GetChild(7).GetComponentInChildren<TextMeshProUGUI>().text = "";
-            }
-            //Setting up Prefab button to display unit when clicked
-            obj.transform.GetChild(1).GetChild(0).GetComponentInChildren<Button>().onClick.AddListener(() => displayUnit(slot));
-            itemsDisplayed.Add(slot, obj);
-
-            //Changing Level color if level exceeds level cap
-            if (totalLevel >= slot.item.goopLevelCap)
-            {
-                Color c = new Color(255, 222, 0, 1.0f);
-                itemsDisplayed[slot].transform.GetChild(5).GetComponentInChildren<TextMeshProUGUI>().color = c;
-                itemsDisplayed[slot].transform.GetChild(5).GetComponentInChildren<TextMeshProUGUI>().text = "MAX";
-            }
-        }
-
-        if(inventory.container.Items.Count > 0)
-        {
-            indexOfCurrentGoop = 0;
-            displayUnit(inventory.container.Items[indexOfCurrentGoop]);
-        }
-    }
-    */
-
     private void UpdateDisplay()
     {
         for (int i = 0; i < inventory.container.Items.Count; i++)

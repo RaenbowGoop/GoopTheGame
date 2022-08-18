@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: '[Basic] Shiny'
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 979a9aefedfcfa2429f2b67b25e03bd7, type: 3}
-  prefab: {fileID: -3031606187923333353, guid: f469c954b018dd545801ea6316b9156c, type: 3}
   type: 0
   description: 'It''s Shiny, but BASIC! D:<
 
 '
   uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Shiny
-  prefabPath: Prefab\UI\4StarInventoryItem
+  goopTags:
+  - Shiny
   goopFaction: Back to the Basics
   goopName: Shiny
   goopLevel: 1

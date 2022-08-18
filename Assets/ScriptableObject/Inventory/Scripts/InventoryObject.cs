@@ -98,7 +98,14 @@ public class InventorySlot : IComparable<InventorySlot>, IEquatable<InventorySlo
 
     public int CompareTo(InventorySlot other)
     {
-        return this.item.CompareGoopObjectDefault(other.item);
+        if (other == null)
+        {
+            return 1;
+        }
+        else
+        {
+            return this.item.CompareGoopObjectDefault(other.item);
+        }
     }
 
     public bool Equals(InventorySlot other)

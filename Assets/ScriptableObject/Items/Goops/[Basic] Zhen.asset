@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: '[Basic] Zhen'
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 528514e7ce926d740bbb6fed6d546c07, type: 3}
-  prefab: {fileID: -3031606187923333353, guid: 17181d982bed46b4b90b0d4e483b2134, type: 3}
   type: 0
   description: 'It''s Zhen, but Goop! :P
 
 '
   uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Zhen
-  prefabPath: Prefab\UI\6StarInventoryItem
+  goopTags:
+  - Zhen
   goopFaction: Back to the Basics
   goopName: Zhen
   goopLevel: 1
