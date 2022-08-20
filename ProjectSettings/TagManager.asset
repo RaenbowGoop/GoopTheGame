@@ -10,6 +10,8 @@ TagManager:
   - GoopCurrency
   - GachaBannerDisplay
   - PullResults
+  - GoopUnit
+  - YenUnit
   layers:
   - Default
   - TransparentFX

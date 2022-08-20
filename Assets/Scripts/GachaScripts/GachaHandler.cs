@@ -17,7 +17,7 @@ public class GachaHandler : MonoBehaviour
     // Banner Properties
     public GachaBannerObject currentBanner;
     public GachaBannerDatabaseObject bannerDatabase;
-    public ItemDatabaseObject goopDatabase;
+    public GoopDatabaseObject goopDatabase;
 
     public List<GoopObject> rateUpSixStarUnits;
     public List<GoopObject> sixStarUnits;

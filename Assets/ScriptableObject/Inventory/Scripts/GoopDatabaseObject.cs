@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new Item Database", menuName ="Inventory System/Items/Database")]
-public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiver
+[CreateAssetMenu(fileName = "new Item Database", menuName ="Inventory System/Items/GoopDatabase")]
+public class GoopDatabaseObject : ScriptableObject, ISerializationCallbackReceiver
 {
     public GoopObject[] GoopObjects;
 
