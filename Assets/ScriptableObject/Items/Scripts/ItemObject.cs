@@ -6,8 +6,7 @@ using Newtonsoft.Json;
 public enum ItemType
 {
     Goop,
-    Item,
-    Default
+    Yen
 }
 
 [JsonObject(MemberSerialization.OptIn)]

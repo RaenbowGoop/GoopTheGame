@@ -11,7 +11,7 @@ public class InventoryObject : ScriptableObject
 {
 
     public string savePath;
-    public ItemDatabaseObject database;
+    public GoopDatabaseObject database;
     public Inventory container;
     private IDataService dataService = new JSonDataService();
 

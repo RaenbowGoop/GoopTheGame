@@ -44,7 +44,7 @@ public class PullResults : MonoBehaviour
 
             //Set Goop Image
             obj.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = pullResults[i].uiDisplay;
-            obj.transform.localScale = new Vector3(.55f, .55f, .55f);
+            obj.transform.localScale = new Vector3(0.49f, 0.49f, 0.49f);
 
             if ( !goopObjectIsNew[i])
             {
