@@ -21,7 +21,7 @@ MonoBehaviour:
   yenLevel: 1
   yenTier: 1
   yenHealth: 100000
-  yenAttack: 100
+  yenAttack: 1000
   yenSpeed: 1
   yenAttackInterval: 1
   yenCastTime: 0.5

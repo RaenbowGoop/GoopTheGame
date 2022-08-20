@@ -16,7 +16,7 @@ public class GoopUnitBehavior : MonoBehaviour
     List<GameObject> currentTargets;
 
     //unit stats
-    public double unitHealth; 
+    public double unitHealth;
     int knockBackCounter;
 
     float KBTimer;
@@ -39,84 +39,32 @@ public class GoopUnitBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //if unit is dead and has played death animation, destroy gameobject
-        if (unitAnimator.GetBool("isDead") && unitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            Destroy(this.gameObject);
-        }
+        //Destroy GameObject if unit is declared DEAD
+        DestroyObject();
 
         //advancing attackIntervalTimer
-        if (isOnCooldown && attackIntervalTimer < unit.goopAttackInterval)
-        {
-            attackIntervalTimer += Time.deltaTime;
-        }
-        else
-        {
-            attackIntervalTimer = 0;
-            isOnCooldown = false;
-        }
+        AdvanceCooldownTimer();
 
         //checking if health checkpoints have been reached
-        if (unitHealth <= (1.0 * (knockBackCounter - 1) / unit.goopKnockbackLimit) * unit.goopHealth)
-        {
-            knockBackCounter--;
-            unitHealth = (1.0 * knockBackCounter / unit.goopKnockbackLimit) * unit.goopHealth;
-            isKnockingBack = true;
-            unitAnimator.Play("Knockback");
-        }
-
+        CheckHealth();
 
         //checking if unit is in process of being knocked back
         if (isKnockingBack)
         {
-            transform.position = new Vector2(transform.position.x + Time.deltaTime * 2, transform.position.y); ;
-            //if the unit has no more health, declare it DEAD
-            if (unitHealth <= 0)
-            {
-                unitAnimator.SetBool("isDead", true);
-            }
-            //set isKnockingback to false when unit is done with KB animation
-            if (KBTimer >= .5)
-            {
-                isKnockingBack = false;
-                KBTimer = 0;
-                if(currentTargets.Count == 0)
-                {
-                    unitAnimator.SetBool("isAttacking", false);
-                    unitAnimator.Play("Idle");
-                }
-            }
-            else
-            {
-                KBTimer += Time.deltaTime;
-            }
+            KnockbackUnit();
         }
         else
         {
-            if(!unitAnimator.GetBool("isDead"))
+            if (!unitAnimator.GetBool("isDead"))
             {
                 //check if unit is currently in process of attacking
                 if (!unitAnimator.GetBool("isAttacking"))
                 {
-                    //check if targets are in range
-                    if (currentTargets.Count == 0)
-                    {
-                        transform.position = new Vector2(transform.position.x - Time.deltaTime * unit.goopSpeed, transform.position.y);
-                        unitAnimator.SetBool("hasTarget", false);
-                    }
-                    else
-                    {
-                        unitAnimator.Play("Idle");
-                        if (!isOnCooldown)
-                        {
-                            unitAnimator.SetBool("hasTarget", true);
-                            unitAnimator.SetBool("isAttacking", true);
-                        }
-                    }
+                    DetermineAction();
                 }
                 else
                 {
+                    //Checking if unit is done casting attack
                     if (unitAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == Animator.StringToHash("Base.Reel") && !isOnCooldown)
                     {
                         //play attack impact animations too
@@ -155,7 +103,7 @@ public class GoopUnitBehavior : MonoBehaviour
         {
             if (currentTargets.Count != 0 && currentTargets[0] != null)
             {
-                DealDamage(currentTargets[0]);
+                DealDamageToUnit(currentTargets[0]);
             }
         }
         else
@@ -164,15 +112,98 @@ public class GoopUnitBehavior : MonoBehaviour
             {
                 if (currentTargets[i] != null)
                 {
-                    DealDamage(currentTargets[i]);
+                    DealDamageToUnit(currentTargets[i]);
                 }
             }
         }
     }
 
-    void DealDamage(GameObject target)
+    void DealDamageToUnit(GameObject target)
     {
         double currentDamage = unit.goopAttack;
         target.transform.parent.parent.GetComponent<YenUnitBehavior>().unitHealth -= currentDamage;
+    }
+
+    void DestroyObject()
+    {
+        //if unit is dead and has played death animation, destroy gameobject
+        if (unitAnimator.GetBool("isDead") && unitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            this.transform.GetChild(0).GetChild(0).GetComponent<Collider2D>().enabled = false;
+            this.transform.GetChild(0).GetChild(1).GetComponent<Collider2D>().enabled = false;
+            Destroy(this.gameObject);
+        }
+    }
+
+    void AdvanceCooldownTimer()
+    {
+        if (isOnCooldown && attackIntervalTimer < unit.goopAttackInterval)
+        {
+            attackIntervalTimer += Time.deltaTime;
+        }
+        else
+        {
+            attackIntervalTimer = 0;
+            isOnCooldown = false;
+        }
+    }
+
+    void CheckHealth()
+    {
+        if (unitHealth <= (1.0 * (knockBackCounter - 1) / unit.goopKnockbackLimit) * unit.goopHealth)
+        {
+            knockBackCounter--;
+            unitHealth = (1.0 * knockBackCounter / unit.goopKnockbackLimit) * unit.goopHealth;
+            isKnockingBack = true;
+            unitAnimator.Play("Knockback");
+        }
+    }
+
+    void KnockbackUnit()
+    {
+        //Move Unit in opposite direction
+        transform.position = new Vector2(transform.position.x + Time.deltaTime * 2, transform.position.y); ;
+
+        //if the unit has no more health, declare it DEAD
+        if (unitHealth <= 0)
+        {
+            unitAnimator.SetBool("isDead", true);
+        }
+        //set isKnockingback to false when unit is done with KB animation
+        if (KBTimer >= .5)
+        {
+            isKnockingBack = false;
+            KBTimer = 0;
+            //Set flags if conditions before and after KB are not the same
+            if (currentTargets.Count == 0)
+            {
+                unitAnimator.SetBool("isAttacking", false);
+                unitAnimator.Play("Idle");
+            }
+        }
+        else
+        {
+            //advance timer
+            KBTimer += Time.deltaTime;
+        }
+    }
+
+    void DetermineAction()
+    {
+        //check if targets are in range
+        if (currentTargets.Count == 0)
+        {
+            transform.position = new Vector2(transform.position.x - Time.deltaTime * unit.goopSpeed, transform.position.y);
+            unitAnimator.SetBool("hasTarget", false);
+        }
+        else
+        {
+            unitAnimator.Play("Idle");
+            if (!isOnCooldown)
+            {
+                unitAnimator.SetBool("hasTarget", true);
+                unitAnimator.SetBool("isAttacking", true);
+            }
+        }
     }
 }
