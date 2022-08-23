@@ -11,7 +11,7 @@ public class GachaHandler : MonoBehaviour
     private Player playerScript;
     public GameObject sceneChanger;
     private SceneChanger sceneChangerScript;
-    public GameObject pullResultsObj;
+    GameObject pullResultsObj;
     private PullResults pullResultsScript;
 
     // Banner Properties
@@ -35,11 +35,28 @@ public class GachaHandler : MonoBehaviour
     GameObject bannerIconPrefab;
     void Start()
     {
+        //Setting up RNG
+        randNumGen = new System.Random();
+
+        //Finding PullResultsOBJ
+        pullResultsObj = GameObject.FindWithTag("PullResults");
+
+        //Setting up scripts
+        sceneChangerScript = sceneChanger.GetComponent<SceneChanger>();
+        pullResultsScript = pullResultsObj.GetComponent<PullResults>();
+
         //loading banner icon prefab
         bannerIconPrefab = Resources.Load<GameObject>("Prefab\\UI\\GachaPrefabs\\BannerIcon");
 
         //setting currentbanner 
-        currentBanner = bannerDatabase.GetBanner[bannerDatabase.currentBanners[0]];
+        if (pullResultsScript.currentBanner == null)
+        {
+            currentBanner = bannerDatabase.GetBanner[bannerDatabase.currentBanners[0]];
+        }
+        else
+        {
+            currentBanner = pullResultsScript.currentBanner;
+        }
 
         //fill 4,5,6 star lists
         fillUnitPools();
@@ -68,16 +85,6 @@ public class GachaHandler : MonoBehaviour
 
         //Hide Confirmation Pull Display
         hideConfirmPullDisplay();
-
-        //Setting up RNG
-        randNumGen = new System.Random();
-
-        //Setting up scripts
-        sceneChangerScript = sceneChanger.GetComponent<SceneChanger>();
-        pullResultsScript = pullResultsObj.GetComponent<PullResults>();
-
-        //Setting up pull result container
-        pullResultsScript.pullResults = new List<GoopObject>();
 
         /* FOR PRINTING POOL
         Debug.Log("rateup 6 stars");
@@ -258,10 +265,11 @@ public class GachaHandler : MonoBehaviour
 
     public void pullGoop(int numOfPulls)
     {
+        pullResultsScript.setCurrentBanner(currentBanner);
         hideConfirmPullDisplay();
 
-        //pullResultsScript.pullResults.Clear();
-        //pullResultsScript.goopObjectIsNew.Clear();
+        pullResultsScript.pullResults.Clear();
+        pullResultsScript.goopObjectIsNew.Clear();
 
         playerScript.subtractGoopBucks(300 * numOfPulls);
         GameObject.FindWithTag("GoopCurrency").transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = playerScript.getGoopBucks().ToString();

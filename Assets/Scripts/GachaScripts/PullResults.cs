@@ -17,6 +17,9 @@ public class PullResults : MonoBehaviour
     //GameObject Parent
     GameObject parent;
 
+    //Current Banner
+    public GachaBannerObject currentBanner;
+
     void Start()
     {
         goopObjectIsNew = new List<bool>();
@@ -31,26 +34,35 @@ public class PullResults : MonoBehaviour
         {
             if (pullResults[i].goopRarity == 6)
             {
-                obj = Instantiate(sixStarGachaPrefab, Vector3.zero, Quaternion.identity, transform);
+                obj = Instantiate(sixStarGachaPrefab, Vector3.zero, Quaternion.identity, parent.transform.GetChild(0).transform);
             }
             else if (pullResults[i].goopRarity == 5)
             {
-                obj = Instantiate(fiveStarGachaPrefab, Vector3.zero, Quaternion.identity, transform);
+                obj = Instantiate(fiveStarGachaPrefab, Vector3.zero, Quaternion.identity, parent.transform.GetChild(0).transform);
             }
             else
             {
-                obj = Instantiate(fourStarGachaPrefab, Vector3.zero, Quaternion.identity, transform);
+                obj = Instantiate(fourStarGachaPrefab, Vector3.zero, Quaternion.identity, parent.transform.GetChild(0).transform);
             }
 
             //Set Goop Image
             obj.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite = pullResults[i].uiDisplay;
-            obj.transform.localScale = new Vector3(0.49f, 0.49f, 0.49f);
+            //obj.transform.localScale = Vector3.one * .5f;
 
             if ( !goopObjectIsNew[i])
             {
                 obj.transform.GetChild(4).GetComponent<Image>().enabled = false;
             }
-            obj.transform.SetParent(parent.transform.GetChild(0).transform);
         }
+    }
+
+    public void setCurrentBanner(GachaBannerObject gachaBanner)
+    {
+        currentBanner = gachaBanner;
+    }
+
+    public GachaBannerObject getCurrentBanner()
+    {
+        return currentBanner;
     }
 }

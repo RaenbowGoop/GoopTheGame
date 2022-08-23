@@ -10,16 +10,6 @@ public class Player : MonoBehaviour
     private int numOfGoopPotions;
     private int numOfGoopBucks;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        var item = collision.GetComponent<Item>();
-        if (item)
-        {
-            inventory.addItem(item.item);
-            Destroy(collision.gameObject);
-        }
-    }
-
     private void OnApplicationQuit()
     {
         //saving inventory

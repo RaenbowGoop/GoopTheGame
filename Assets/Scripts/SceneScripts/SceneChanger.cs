@@ -55,8 +55,8 @@ public class SceneChanger : MonoBehaviour
 
     public void LoadGachaMenuFromGachaResults()
     {
-        GameObject obj = GameObject.FindWithTag("PullResults");
-        Destroy(obj);
+        //GameObject obj = GameObject.FindWithTag("PullResults");
+        //Destroy(obj);
 
         StartCoroutine(LoadLevel("GachaMenu"));
     }

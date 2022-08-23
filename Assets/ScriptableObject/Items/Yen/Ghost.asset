@@ -20,15 +20,15 @@ MonoBehaviour:
   yenName: Ghost
   yenLevel: 1
   yenTier: 1
-  yenHealth: 100000
-  yenAttack: 1000
+  yenHealth: 3000
+  yenAttack: 1
   yenSpeed: 1
   yenAttackInterval: 1
   yenCastTime: 0.5
   yenRecoveryTime: 0.5
   yenAttackRange: 0
   yenKnockbackLimit: 5
-  yenTargetType: AOE
+  yenTargetType: ST
   freezeChance: 0
   shatterChance: 0
   criticalHitChance: 0
