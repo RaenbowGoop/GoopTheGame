@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7714de91462fd9b41a8ab757fbb5e95b, type: 3}
   m_Name: '[Senatus Populusque Gooplandus] Jumbo'
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 14fcb6c004241b9489ddaffac79c20ce, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 42ce1b440344bc446a3146a4c42835c5, type: 3}
   type: 0
   description: He killed Caesar! OH MY GOOP HE KILLED CAESAR!!!
-  uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Zhen
+  uiDisplayPath: GoopGraphics/Inventory Icons/6 Star Inventory Assets/6 stars alt
   goopAnimator: {fileID: 0}
   goopTags:
   - Jumbo
@@ -25,14 +25,14 @@ MonoBehaviour:
   goopLevelCap: 10
   goopRarity: 6
   goopDuplicates: 0
-  goopHealth: 2000
-  goopAttack: 200
+  goopHealth: 3000
+  goopAttack: 1000
   goopDefense: 908
   goopSpeed: 1
   goopAttackInterval: 5
   goopCastTime: 908
   goopDC: 908
-  goopCDT: 908
+  goopCDT: 5
   goopAttackRange: 0
   goopKnockbackLimit: 5
   goopTargetType: ST

@@ -18,6 +18,7 @@ MonoBehaviour:
 
 '
   uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Zhen
+  goopAnimator: {fileID: 0}
   goopTags:
   - Zhen
   goopFaction: Back to the Basics
@@ -26,12 +27,17 @@ MonoBehaviour:
   goopLevelCap: 10
   goopRarity: 6
   goopDuplicates: 0
-  goopHealth: 1690
+  goopHealth: 10000
   goopAttack: 169
   goopDefense: 69
-  goopSpeed: 20
-  goopAttackInterval: 1.5
+  goopSpeed: 2
+  goopAttackInterval: 5
   goopCastTime: 0.4
   goopDC: 200
-  goopCDT: 15
-  knockbackLimit: 0
+  goopCDT: 0
+  goopAttackRange: 0
+  goopKnockbackLimit: 2
+  goopTargetType: ST
+  freezeChance: 0
+  shatterChance: 0
+  criticalHitChance: 0

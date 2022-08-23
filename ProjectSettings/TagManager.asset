@@ -12,6 +12,8 @@ TagManager:
   - PullResults
   - GoopUnit
   - YenUnit
+  - PlayerBase
+  - EnemyBase
   layers:
   - Default
   - TransparentFX

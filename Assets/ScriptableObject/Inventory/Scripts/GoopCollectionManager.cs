@@ -14,13 +14,15 @@ public class GoopCollectionManager : MonoBehaviour
     GameObject fiveStarPrefab;
     GameObject fourStarPrefab;
 
+    GameObject currentUnitObj;
+
     // Start is called before the first frame update
     void Start()
     {
         //Loading in prefabs
-        sixStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\InventorySlots\\6StarInventoryItem");
-        fiveStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\InventorySlots\\5StarInventoryItem");
-        fourStarPrefab = Resources.Load<GameObject>("Prefab\\UI\\InventorySlots\\4StarInventoryItem");
+        sixStarPrefab = Resources.Load<GameObject>("Prefab/UI/InventorySlots/6StarInventoryItem");
+        fiveStarPrefab = Resources.Load<GameObject>("Prefab/UI/InventorySlots/5StarInventoryItem");
+        fourStarPrefab = Resources.Load<GameObject>("Prefab/UI/InventorySlots/4StarInventoryItem");
 
         //Loading Goop Currency
         Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
@@ -34,7 +36,7 @@ public class GoopCollectionManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {  
         UpdateDisplay();
     }
 
@@ -42,7 +44,6 @@ public class GoopCollectionManager : MonoBehaviour
     {
         for (int i = 0; i < inventory.container.Items.Count; i++)
         {
-            
             InventorySlot slot = inventory.container.Items[i];
             int totalLevel = slot.item.goopLevel;
 
@@ -138,17 +139,39 @@ public class GoopCollectionManager : MonoBehaviour
         if(unitDisplay != null)
         {
             //Displaying Unit Art
-            unitDisplay.transform.GetChild(0).GetComponent<Image>().sprite = goop.uiDisplay;
+            string goopUnitPrefabPath = "Prefab/GoopUnits/" + goop.goopFaction + "/" + goop.goopName + "Prefab";
+            GameObject goopPrefab = Resources.Load<GameObject>(goopUnitPrefabPath);
+
+            if(currentUnitObj != null)
+            {
+                //replaces unit if the selected unit is not currently being displayed
+                GoopUnitBehavior gubScript = currentUnitObj.transform.GetChild(0).GetComponent<GoopUnitBehavior>();
+                if (!gubScript.unit.Equals(goop))
+                {
+                    Destroy(currentUnitObj);
+                    currentUnitObj = Instantiate(goopPrefab, unitDisplay.transform.position, Quaternion.identity);
+                    gubScript = currentUnitObj.transform.GetChild(0).GetComponent<GoopUnitBehavior>();
+                    gubScript.SetDisplayMode(true);
+                    currentUnitObj.transform.SetParent(unitDisplay.transform.GetChild(0));
+                }
+            }
+            else
+            {
+                //creates obj with unit prefab if there is no obj being displayed currently
+                currentUnitObj = Instantiate(goopPrefab, unitDisplay.transform.position, Quaternion.identity);
+                currentUnitObj.transform.GetChild(0).GetComponent<GoopUnitBehavior>().SetDisplayMode(true);
+                currentUnitObj.transform.SetParent(unitDisplay.transform.GetChild(0));
+            }
 
             //Displaying Unit Rarity/Stars
-            string starPath = "GoopGraphics\\Stars\\4StarScaled";
+            string starPath = "GoopGraphics/Stars/4StarScaled";
             if (goop.goopRarity == 6)
             {
-                starPath = "GoopGraphics\\Stars\\6StarScaled";
+                starPath = "GoopGraphics/Stars/6StarScaled";
             }
             else if (goop.goopRarity == 5)
             {
-                starPath = "GoopGraphics\\Stars\\5StarScaled";
+                starPath = "GoopGraphics/Stars/5StarScaled";
             }
             unitDisplay.transform.GetChild(1).GetComponent<Image>().sprite = Resources.Load<Sprite>(starPath);
 
