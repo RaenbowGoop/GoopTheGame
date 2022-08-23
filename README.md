@@ -1,6 +1,5 @@
 # GoopTheGame
-its goop, but game.
-
+its goop, but game.\
 Developed by Allyson Le (Saki) and Amanda Le (Shiny).
 
 # Credits 
