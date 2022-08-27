@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.767691, y: -5.227899}
+  m_Offset: {x: -3.767691, y: -6.41}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -95,8 +95,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00000500679, y: 0.14}
-  m_SizeDelta: {x: 10.417, y: 15.291}
+  m_AnchoredPosition: {x: -0.0000019073486, y: -0.0000060796738}
+  m_SizeDelta: {x: 25.379, y: 27.704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1809913318632471233
 SpriteRenderer:
@@ -215,7 +215,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.6010033, y: -5.227852}
+  m_Offset: {x: -0.6010033, y: -6.41}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -237,6 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1720711451344015280}
+  - component: {fileID: 2747920634082457844}
   m_Layer: 0
   m_Name: NymoPrefab
   m_TagString: Untagged
@@ -262,9 +263,17 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.409178, y: 11.369753}
-  m_SizeDelta: {x: 67.1583, y: 76.8058}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 29.3531, y: 33.5697}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2747920634082457844
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425088495318303391}
+  m_CullTransparentMesh: 1
 --- !u!1 &7021532613827028993
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +301,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7021532613827028993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90.12}
+  m_LocalPosition: {x: 0, y: 0, z: 90.12001}
   m_LocalScale: {x: 44.58, y: 44.58, z: 26.21302}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -302,7 +311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2546, y: 60.2}
+  m_AnchoredPosition: {x: -3.0005648, y: 69.4}
   m_SizeDelta: {x: 2.51, y: 2.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &7352567733269944133
@@ -346,6 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9861b71cf88f154683a7f08cc710395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 11400000, guid: 430744a1628bd9b4eac45c73512fc638, type: 2}
+  unit: {fileID: 11400000, guid: c8ca9bac3106f1141b980b20937b2563, type: 2}
   unitHealth: 0
+  knockBackCounter: 0
   unitBase: {fileID: 0}

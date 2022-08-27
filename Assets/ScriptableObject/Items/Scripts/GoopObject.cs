@@ -61,7 +61,7 @@ public class GoopObject : ItemObject, System.IEquatable<GoopObject>
 
     public double CalculateDefense()
     {
-        return goopDefense * (1 + (goopLevel - 1) * 0.1 + (goopDuplicates * 0.1));
+        return goopDefense * (1 + ((goopLevel - 1) * 0.1) + (goopDuplicates * 0.1));
     }
 
     public bool Equals(GoopObject other)

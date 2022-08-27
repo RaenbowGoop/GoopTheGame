@@ -10,6 +10,7 @@ public class CombatUnitSlot : MonoBehaviour
     public GameObject goopPrefab;
     float cooldownTimer;
     public bool isOnCooldown;
+    public AudioSource buttonSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +45,6 @@ public class CombatUnitSlot : MonoBehaviour
     {
         //put unit on cooldown
         isOnCooldown = true;
-
-        //gray out UI
-
 
         //turn on text
         this.transform.GetChild(1).GetComponent<TextMeshProUGUI>().enabled = true;

@@ -26,20 +26,32 @@ public class PlayerDataManager : MonoBehaviour
         if (musicTog.isOn)
         {
             PlayerPrefs.SetInt("musicOn", 1);
-            GameObject.FindWithTag("BGM").GetComponent<AudioSource>().mute = false;
+            toggleAudioSource("BGM", false);
         }
         else
         {
             PlayerPrefs.SetInt("musicOn", -1);
+            toggleAudioSource("BGM", true);
         }
 
         if (SFXTog.isOn)
         {
             PlayerPrefs.SetInt("SFXOn", 1);
+            toggleAudioSource("SFX", false);
         }
         else
         {
             PlayerPrefs.SetInt("SFXOn", -1);
+            toggleAudioSource("SFX", true);
+        }
+    }
+
+    void toggleAudioSource(string tag, bool isOff)
+    {
+        GameObject[] audioGOs = GameObject.FindGameObjectsWithTag(tag);
+        for (int i = 0; i < audioGOs.Length; i++)
+        {
+            audioGOs[i].GetComponent<AudioSource>().mute = isOff;
         }
     }
 }

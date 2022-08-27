@@ -29,7 +29,7 @@ public class InventoryObject : ScriptableObject
                 return; 
             }
         }
-        container.Items.Add(new InventorySlot(database.GetId[_item], _item));
+        container.Items.Add(new InventorySlot(database.GetId[database.getMatchingGoop(_item)], _item));
         container.Items.Sort();
         Save();
         Load();

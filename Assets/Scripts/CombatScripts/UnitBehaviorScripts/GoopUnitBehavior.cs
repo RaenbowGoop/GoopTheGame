@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GoopUnitBehavior : MonoBehaviour
 {
@@ -18,9 +19,10 @@ public class GoopUnitBehavior : MonoBehaviour
 
     //unit stats
     public double unitHealth;
-    int knockBackCounter;
+    public int knockBackCounter;
 
     float KBTimer;
+    const float KB_SPEED = 2.3f;
 
     public GameObject unitBase;
 
@@ -40,7 +42,7 @@ public class GoopUnitBehavior : MonoBehaviour
         randNumGen = new System.Random();
         unitAnimator = transform.GetChild(0).GetComponent<Animator>();
 
-        transform.parent.position = new Vector2(unitBase.transform.position.x, unitBase.transform.position.y);
+        transform.parent.position = new Vector2(unitBase.transform.parent.position.x, unitBase.transform.parent.position.y);
     }
 
     // Update is called once per frame
@@ -130,10 +132,14 @@ public class GoopUnitBehavior : MonoBehaviour
     void DealDamageToUnit(GameObject target)
     {
         //calculate damage
-        double currentDamage = unit.goopAttack;
+        double currentDamage = unit.CalculateAttack();
+        Debug.Log(unit.goopName + ": " + unit.CalculateAttack());
         if (target.tag == "EnemyBase")
         {
             target.transform.parent.GetComponent<EnemyBase>().baseHealth -= currentDamage;
+
+            //print enemy base hp
+            target.transform.parent.GetComponent<EnemyBase>().transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = target.transform.parent.GetComponent<EnemyBase>().baseHealth.ToString();
         }
         else
         {
@@ -147,7 +153,7 @@ public class GoopUnitBehavior : MonoBehaviour
         //if unit is dead and has played death animation, destroy gameobject
         if (unitAnimator.GetBool("isDead") && unitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
-            this.transform.parent.parent.GetComponent<PlayerBase>().RemoveUnit(this.transform.parent.gameObject);
+            unitBase.transform.parent.GetComponent<PlayerBase>().RemoveUnit(this.transform.parent.gameObject);
             this.transform.GetChild(0).GetChild(0).GetComponent<Collider2D>().enabled = false;
             this.transform.GetChild(0).GetChild(1).GetComponent<Collider2D>().enabled = false;
             Destroy(this.transform.parent.gameObject);
@@ -184,7 +190,7 @@ public class GoopUnitBehavior : MonoBehaviour
     void KnockbackUnit()
     {
         //Move Unit in opposite direction
-        transform.position = new Vector2(transform.position.x + Time.deltaTime * 2, transform.position.y);
+        transform.position = new Vector2(transform.position.x + Time.deltaTime * KB_SPEED, transform.position.y);
 
         //if the unit has no more health, declare it DEAD
         if (unitHealth <= 0)
@@ -218,7 +224,6 @@ public class GoopUnitBehavior : MonoBehaviour
             if (!isOnDisplayMode)
             {
                 transform.position = new Vector2(transform.position.x - Time.deltaTime * unit.goopSpeed, transform.position.y);
-
             }
             unitAnimator.SetBool("hasTarget", false);
         }

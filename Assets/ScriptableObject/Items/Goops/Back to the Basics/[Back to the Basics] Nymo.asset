@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7714de91462fd9b41a8ab757fbb5e95b, type: 3}
+  m_Name: '[Back to the Basics] Nymo'
+  m_EditorClassIdentifier: 
+  uiDisplay: {fileID: 21300000, guid: a734a0a8d6f50644c90c67f51923936b, type: 3}
+  type: 0
+  description: 'It''s Basic, but Nymo! (8
+
+'
+  uiDisplayPath: GoopGraphics\GoopSprites\[Basic] Nymo
+  goopAnimator: {fileID: 0}
+  goopTags:
+  - Nymo
+  goopFaction: Back to the Basics
+  goopName: Nymo
+  goopLevel: 1
+  goopLevelCap: 10
+  goopRarity: 6
+  goopDuplicates: 0
+  goopHealth: 1578
+  goopAttack: 1000
+  goopDefense: 432
+  goopSpeed: 2
+  goopAttackInterval: 1.5
+  goopCastTime: 0.4
+  goopDC: 200
+  goopCDT: 3
+  goopAttackRange: 0
+  goopKnockbackLimit: 3
+  goopTargetType: 
+  freezeChance: 0
+  shatterChance: 0
+  criticalHitChance: 0

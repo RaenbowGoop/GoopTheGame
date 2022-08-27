@@ -14,6 +14,7 @@ TagManager:
   - YenUnit
   - PlayerBase
   - EnemyBase
+  - GameplayUI
   layers:
   - Default
   - TransparentFX

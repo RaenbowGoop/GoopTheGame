@@ -7,9 +7,18 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+          
+    }
+
+    public void SetSceneSounds()
+    {
         if (PlayerPrefs.GetInt("musicOn") == -1)
         {
-            GameObject.FindWithTag("BGM").GetComponent<AudioSource>().mute = true;
+            GameObject[] BGM = GameObject.FindGameObjectsWithTag("BGM");
+            foreach (GameObject audio in BGM)
+            {
+                audio.GetComponent<AudioSource>().mute = true;
+            }
         }
 
         if (PlayerPrefs.GetInt("SFXOn") == -1)
@@ -19,6 +28,11 @@ public class SoundManager : MonoBehaviour
             {
                 audio.GetComponent<AudioSource>().mute = true;
             }
-        }   
+        }
+    }
+
+    void Update()
+    {
+        SetSceneSounds();
     }
 }

@@ -88,4 +88,11 @@ public class SceneChanger : MonoBehaviour
     {
         StartCoroutine(LoadLevel(sceneName));
     }
+
+    public void LoadStage(string sceneName)
+    {
+        GameObject obj = GameObject.FindWithTag("BGM");
+        Destroy(obj);
+        LoadScene(sceneName);
+    }
 }
