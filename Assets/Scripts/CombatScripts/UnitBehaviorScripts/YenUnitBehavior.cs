@@ -16,9 +16,12 @@ public class YenUnitBehavior : MonoBehaviour
 
     //unit stats
     public double unitHealth;
-    int knockBackCounter;
+    public double initialUnitHealth;
+    public double unitAttack;
+    public int knockBackCounter;
 
     float KBTimer;
+    const float KB_SPEED = 2.3f;
 
     public GameObject unitBase;
 
@@ -30,14 +33,13 @@ public class YenUnitBehavior : MonoBehaviour
         isKnockingBack = false;
         attackIntervalTimer = 0;
 
-        unitHealth = unit.yenHealth;
         knockBackCounter = unit.yenKnockbackLimit;
 
         currentTargets = new List<GameObject>();
         randNumGen = new System.Random();
         unitAnimator = transform.GetChild(0).GetComponent<Animator>();
 
-        transform.position = new Vector2(unitBase.transform.position.x, unitBase.transform.position.y);
+        transform.parent.position = new Vector2(unitBase.transform.parent.position.x, unitBase.transform.parent.position.y);
     }
 
     // Update is called once per frame
@@ -87,7 +89,7 @@ public class YenUnitBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "UnitHitbox" && 
+        if ((collider.gameObject.name == "UnitHitbox" || collider.gameObject.name == "BaseHitbox") && 
             (collider.gameObject.tag == "GoopUnit"|| collider.gameObject.tag == "PlayerBase"))
         {
             currentTargets.Add(collider.gameObject);
@@ -96,7 +98,7 @@ public class YenUnitBehavior : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "UnitHitbox" && 
+        if ((collider.gameObject.name == "UnitHitbox" || collider.gameObject.name == "BaseHitbox") &&
             (collider.gameObject.tag == "GoopUnit" || collider.gameObject.tag == "PlayerBase"))
         {
             currentTargets.Remove(collider.gameObject);
@@ -127,7 +129,7 @@ public class YenUnitBehavior : MonoBehaviour
     void DealDamageToUnit(GameObject target)
     {
         //calculate damage
-        double currentDamage = unit.yenAttack;
+        double currentDamage = unitAttack;
         if (target.tag == "PlayerBase")
         {
             target.transform.parent.GetComponent<PlayerBase>().baseHealth -= currentDamage;
@@ -144,6 +146,8 @@ public class YenUnitBehavior : MonoBehaviour
         //if unit is dead and has played death animation, destroy gameobject
         if (unitAnimator.GetBool("isDead") && unitAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
+            // Distribute Ice Cream Drop
+            GameObject.FindWithTag("PlayerBase").transform.parent.GetComponent<PlayerBase>().addIcecream(unit.yenIceCreamDrop);
             this.transform.parent.parent.GetComponent<EnemyBase>().RemoveUnit(this.transform.parent.gameObject);
             this.transform.GetChild(0).GetChild(0).GetComponent<Collider2D>().enabled = false;
             this.transform.GetChild(0).GetChild(1).GetComponent<Collider2D>().enabled = false;
@@ -166,10 +170,10 @@ public class YenUnitBehavior : MonoBehaviour
 
     void CheckHealth()
     {
-        if (unitHealth <= (1.0 * (knockBackCounter - 1) / unit.yenKnockbackLimit) * unit.yenHealth)
+        if (unitHealth <= (1.0 * (knockBackCounter - 1) / unit.yenKnockbackLimit) * initialUnitHealth)
         {
             knockBackCounter--;
-            unitHealth = (1.0 * knockBackCounter / unit.yenKnockbackLimit) * unit.yenHealth;
+            unitHealth = (1.0 * knockBackCounter / unit.yenKnockbackLimit) * initialUnitHealth;
             isKnockingBack = true;
             unitAnimator.Play("Knockback");
         }
@@ -178,7 +182,7 @@ public class YenUnitBehavior : MonoBehaviour
     void KnockbackUnit()
     {
         //Move Unit in opposite direction
-        transform.position = new Vector2(transform.position.x - Time.deltaTime * 2, transform.position.y);
+        transform.position = new Vector2(transform.position.x - Time.deltaTime * KB_SPEED, transform.position.y);
 
         //if the unit has no more health, declare it DEAD
         if (unitHealth <= 0)
@@ -221,5 +225,12 @@ public class YenUnitBehavior : MonoBehaviour
                 unitAnimator.SetBool("isAttacking", true);
             }
         }
+    }
+
+    public void SetInitialStats(double health, double attack)
+    {
+        initialUnitHealth = health; 
+        unitHealth = health;
+        unitAttack = attack;
     }
 }

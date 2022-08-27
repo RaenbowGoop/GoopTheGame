@@ -18,17 +18,14 @@ MonoBehaviour:
   uiDisplayPath: 
   yenTags: []
   yenName: Ghost
-  yenLevel: 1
   yenTier: 1
+  yenIceCreamDrop: 1000
   yenHealth: 3000
-  yenAttack: 1
+  yenAttack: 1000
   yenSpeed: 1
   yenAttackInterval: 1
   yenCastTime: 0.5
   yenRecoveryTime: 0.5
   yenAttackRange: 0
   yenKnockbackLimit: 5
-  yenTargetType: ST
-  freezeChance: 0
-  shatterChance: 0
-  criticalHitChance: 0
+  yenTargetType: AOE

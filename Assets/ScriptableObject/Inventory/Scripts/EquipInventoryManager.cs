@@ -133,7 +133,7 @@ public class EquipInventoryManager : MonoBehaviour
                     return;
                 }
             }
-            lineup.addItem(inventory.database.getMatchingGoop(inventory.container.Items[indexOfCurrentGoop].item));
+            lineup.addItem(inventory.container.Items[indexOfCurrentGoop].item);
         }
     }
 

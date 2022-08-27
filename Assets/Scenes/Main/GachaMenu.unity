@@ -1036,6 +1036,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635272838}
   m_CullTransparentMesh: 1
+--- !u!1001 &769963050
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2073734
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5732107
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 142.70055
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200517, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259553842402200519, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98a9127853c987d47b259ee7a54fafea, type: 3}
 --- !u!1 &773623272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,7 +1757,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.00019836}
+  m_AnchoredPosition: {x: 0.26262, y: 0.25225}
   m_SizeDelta: {x: 1920, y: 1080.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1135882811
@@ -1738,7 +1795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.00019836}
+  m_AnchoredPosition: {x: 0.26262, y: 0.25225}
   m_SizeDelta: {x: 1920, y: 1080.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1188743302
@@ -2131,6 +2188,7 @@ MonoBehaviour:
   fourStarGachaPrefab: {fileID: -3031606187923333353, guid: 61fc2143516c3a14091f780cc2588d0e, type: 3}
   fiveStarGachaPrefab: {fileID: -3031606187923333353, guid: ed847aa8c6918da498c12d02a3633513, type: 3}
   sixStarGachaPrefab: {fileID: -3031606187923333353, guid: 634bc6f284101cb4693158c1551d9f9c, type: 3}
+  currentBanner: {fileID: 0}
 --- !u!4 &1297081487
 Transform:
   m_ObjectHideFlags: 0
@@ -3073,7 +3131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 922911425}
   sceneChanger: {fileID: 1311004472}
-  pullResultsObj: {fileID: 1297081485}
   currentBanner: {fileID: 11400000, guid: bc9bb71249e017f4c942f7aa5b78b283, type: 2}
   bannerDatabase: {fileID: 11400000, guid: 50c94d6df7a71f84191622b85e9df66b, type: 2}
   goopDatabase: {fileID: 11400000, guid: 2efbbe2f46a2a6d4aad6c6a3a3a707f3, type: 2}

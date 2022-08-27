@@ -10,12 +10,12 @@ public class LineUpManager : MonoBehaviour
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
 
     //prefabs
-    GameObject displayPrefab;
+    [SerializeField] GameObject displayPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        displayPrefab = Resources.Load<GameObject>("Prefab\\UI\\LineUp\\LineUpDisplay");
+
     }
 
     // Update is called once per frame

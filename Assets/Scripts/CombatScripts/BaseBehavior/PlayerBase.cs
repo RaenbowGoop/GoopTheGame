@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerBase : MonoBehaviour
 {
-    [SerializeField] InventoryObject lineup;
-
     public double baseHealth;
+
+    [SerializeField] InventoryObject lineup;
+    [SerializeField] GameObject GameplayUI;
+    Transform icecreamText;
+    Transform unitsDeployedNumberText;
 
     float currentIceCream;
     float iceCreamCap;
     int baseLevel;
     float iceCreamRate; //icecream per second
     float iceCreamTimer;
+    bool lineupIsSetUp;
 
     List<GameObject> currentDeployedUnits;
 
@@ -21,19 +26,33 @@ public class PlayerBase : MonoBehaviour
     void Start()
     {
         baseHealth = 10000;
-        currentIceCream = 5000;
+        currentIceCream = 1000;
         baseLevel = 1;
-        iceCreamCap = 5000;
+        iceCreamCap = 15000;
         iceCreamTimer = 0f;
-        iceCreamRate = 50;
+        iceCreamRate = 100;
 
         currentDeployedUnits = new List<GameObject>();
         SetUpLineup();
+
+        icecreamText = GameplayUI.transform.GetChild(0).GetChild(0);
+        unitsDeployedNumberText = GameplayUI.transform.GetChild(1);
+
+        //Set IceCream Text
+        icecreamText.GetChild(0).GetComponent<TextMeshProUGUI>().text = (int)currentIceCream + "/" + iceCreamCap;
+        icecreamText.GetChild(1).GetComponent<TextMeshProUGUI>().text = (int)currentIceCream + "/" + iceCreamCap;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if(!lineupIsSetUp)
+        {
+            SetUpLineup();
+            lineupIsSetUp = true;
+        }
+        
         //incrementing ice cream currency
         if (currentIceCream + Time.deltaTime * iceCreamRate >= iceCreamCap)
         {
@@ -41,8 +60,14 @@ public class PlayerBase : MonoBehaviour
         }
         else
         {
-            currentIceCream += (Time.deltaTime * iceCreamRate);
+            addIcecream(Time.deltaTime * iceCreamRate);
+            icecreamText.GetChild(0).GetComponent<TextMeshProUGUI>().text = (int)currentIceCream + "/" + iceCreamCap;
+            icecreamText.GetChild(1).GetComponent<TextMeshProUGUI>().text = (int)currentIceCream + "/" + iceCreamCap;
         }
+
+        //Update Units Deployed UI
+        unitsDeployedNumberText.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentDeployedUnits.Count + "/50";
+        unitsDeployedNumberText.GetChild(1).GetComponent<TextMeshProUGUI>().text = currentDeployedUnits.Count + "/50";
     }
 
     public void DeployUnit(CombatUnitSlot unitSlot)
@@ -56,8 +81,12 @@ public class PlayerBase : MonoBehaviour
             //instantiate prefab
             GameObject obj = Instantiate(unitSlot.goopPrefab, this.transform.position, Quaternion.identity);
 
+            obj.transform.GetChild(0).GetComponent<GoopUnitBehavior>().unit = unitSlot.transform.GetComponent<CombatUnitSlot>().goop;
+
             obj.transform.SetParent(this.transform);
             currentDeployedUnits.Add(obj);
+
+            unitSlot.transform.parent.parent.GetChild(4).GetComponent<AudioSource>().Play();
         }
         else
         {
@@ -77,15 +106,21 @@ public class PlayerBase : MonoBehaviour
         for (int i = 0; i < lineup.container.Items.Count; i ++)
         {
             GameObject unitSlot = selectionPanel.transform.GetChild(i).gameObject;
-            unitSlot.transform.GetChild(0).GetChild(1).GetComponent<CombatUnitSlot>().SetGoop(lineup.container.Items[i].item);
+            unitSlot.transform.GetChild(1).GetChild(1).GetComponent<CombatUnitSlot>().SetGoop(lineup.container.Items[i].item);
 
             //set sprites
-            unitSlot.transform.GetChild(0).GetChild(1).GetComponent<Image>()
+            unitSlot.transform.GetChild(1).GetChild(1).GetComponent<Image>()
                 .sprite = lineup.container.Items[i].item.uiDisplay;
 
+            //set deployment cost texts
+            unitSlot.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = 
+                unitSlot.transform.GetChild(1).GetChild(1).GetComponent<CombatUnitSlot>().goop.goopDC.ToString();
+            unitSlot.transform.GetChild(3).GetChild(1).GetComponent<TextMeshProUGUI>().text =
+                unitSlot.transform.GetChild(1).GetChild(1).GetComponent<CombatUnitSlot>().goop.goopDC.ToString();
+
             //setting listener to button
-            unitSlot.transform.GetChild(0).GetChild(1).GetComponent<Button>()
-                .onClick.AddListener(() => DeployUnit(unitSlot.transform.GetChild(0).GetChild(1).GetComponent<CombatUnitSlot>()));
+            unitSlot.transform.GetChild(1).GetChild(1).GetComponent<Button>()
+                .onClick.AddListener(() => DeployUnit(unitSlot.transform.GetChild(1).GetChild(1).GetComponent<CombatUnitSlot>()));
 
             
         }
@@ -95,6 +130,21 @@ public class PlayerBase : MonoBehaviour
             {
                 selectionPanel.transform.GetChild(i).gameObject.SetActive(false);
             }
+        }
+    }
+
+    public void addIcecream(float iceCreamDrop)
+    {
+        currentIceCream += iceCreamDrop;
+    }
+
+    public void KillAll()
+    {
+        for(int i = 0; i < currentDeployedUnits.Count; i++)
+        {
+            GoopUnitBehavior GUBscript = currentDeployedUnits[i].transform.GetChild(0).GetComponent<GoopUnitBehavior>();
+            GUBscript.knockBackCounter = 1;
+            GUBscript.unitHealth = 0;
         }
     }
 }
