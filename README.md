@@ -1,6 +1,7 @@
 # GoopTheGame
 its goop, but game.\
-Developed by Allyson Le (Saki) and Amanda Le (Shiny).
+Developed by Allyson Le (Saki) and Amanda Le (Shiny). \
+Project Status: Scrapped!
 
 # Credits 
 ## Music
